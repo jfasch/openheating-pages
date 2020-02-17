@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Blah &mdash; openheating 0.0.0 documentation</title>
+  <title>Adding a Custom Domain to a Github Pages Project Site &mdash; openheating 0.0.0 documentation</title>
   
 
   
@@ -170,14 +170,10 @@
 <li class="toctree-l3"><a class="reference internal" href="sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="sphinx-gh-pages.html#step-2-optional-copy-build-over-to-deployment-repo">Step 2 (optional): Copy Build Over to Deployment Repo</a></li>
-<li class="toctree-l5"><a class="reference internal" href="sphinx-gh-pages.html#id1">Step 2 (optional): Copy Build Over to Deployment Repo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Blah</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a Custom Domain to a Github Pages Project Site</a></li>
 </ul>
 </li>
 </ul>
@@ -284,7 +280,7 @@
         
           <li><a href="index.html">Github Pages as Hosting Platform</a> &raquo;</li>
         
-      <li>Blah</li>
+      <li>Adding a Custom Domain to a Github Pages Project Site</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -303,8 +299,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="blah">
-<h1>Blah<a class="headerlink" href="#blah" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="adding-a-custom-domain-to-a-github-pages-project-site">
+<h1>Adding a Custom Domain to a Github Pages Project Site<a class="headerlink" href="#adding-a-custom-domain-to-a-github-pages-project-site" title="Permalink to this headline">¶</a></h1>
+<p>This is remarkably simple nowadays. The Github Pages documentation is
+a little confusing: they only talk about user and organization pages,
+and <em>not</em> about project pages. There are <a class="reference external" href="https://stackoverflow.com/questions/9082499/custom-domain-for-github-project-pages">numerous posts</a>
+on the internet that suggest that adding a custom domain to a <em>project
+page</em> has been cumbersome in the past - these days are over,
+apparently. Following is what I did.</p>
+<ol class="arabic">
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">openheating-pages</span></code> project, configure a custom domain</p>
+<p>(Enforcing HTTPS also makes sense, while we are at it)</p>
+<img alt="../../../_images/custom-domain.png" src="../../../_images/custom-domain.png" />
+<p>All this does is to create a <code class="file docutils literal notranslate"><span class="pre">docs/CNAME</span></code>; pull the changes,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/openheating-pages
+$ git pull
+</pre></div>
+</div>
+</li>
+<li><p>Point <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code> to <code class="docutils literal notranslate"><span class="pre">jfasch.github.io</span></code></p>
+<p>At your DNS provider, create a <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> DNS record for
+<code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code> and set its value to point to
+<code class="docutils literal notranslate"><span class="pre">jfasch.github.io</span></code>. Wait some time (minutes?) for the changes to
+propagate. Check like so,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ dig www.openheating.org
+
+<span class="p">;</span> &lt;&lt;&gt;&gt; DiG <span class="m">9</span>.11.14-RedHat-9.11.14-2.fc31 &lt;&lt;&gt;&gt; www.openheating.org
+<span class="p">;;</span> global options: +cmd
+<span class="p">;;</span> Got answer:
+<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opcode: QUERY, status: NOERROR, id: 29463</span>
+<span class="s">;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 0</span>
+
+<span class="s">;; QUESTION SECTION:</span>
+<span class="s">;www.op</span>enheating.org.             IN      A
+
+<span class="p">;;</span> ANSWER SECTION:
+www.openheating.org.      <span class="m">3600</span>    IN      CNAME   jfasch.github.io.
+jfasch.github.io. <span class="m">3600</span>    IN      A       <span class="m">185</span>.199.110.153
+jfasch.github.io. <span class="m">3600</span>    IN      A       <span class="m">185</span>.199.108.153
+jfasch.github.io. <span class="m">3600</span>    IN      A       <span class="m">185</span>.199.111.153
+jfasch.github.io. <span class="m">3600</span>    IN      A       <span class="m">185</span>.199.109.153
+
+<span class="p">;;</span> Query time: <span class="m">66</span> msec
+<span class="p">;;</span> SERVER: <span class="m">192</span>.168.1.1#53<span class="o">(</span><span class="m">192</span>.168.1.1<span class="o">)</span>
+<span class="p">;;</span> WHEN: Tue Feb <span class="m">18</span> <span class="m">00</span>:21:04 CET <span class="m">2020</span>
+<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">131</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">ANSWER</span> <span class="pre">SECTION</span></code> you can see that <code class="docutils literal notranslate"><span class="pre">www.openheating.org.</span></code>
+(the trailing dot says this is a FQDN “Fully Qualified Domain
+Name”) is an alias (<code class="docutils literal notranslate"><span class="pre">CNAME</span></code>) for <code class="docutils literal notranslate"><span class="pre">jfasch.github.io.</span></code>. And btw.,
+<code class="docutils literal notranslate"><span class="pre">jfasch.github.io.</span></code> has four addresses (<code class="docutils literal notranslate"><span class="pre">A</span></code>).</p>
+</li>
+<li><p>Done; surf to <a class="reference external" href="https://www.openheating.org">https://www.openheating.org</a>.</p></li>
+</ol>
 </div>
 
 
