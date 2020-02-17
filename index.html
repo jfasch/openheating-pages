@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenHeating: Open Source Heating Control System &mdash; openheating 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="doc/install/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> openheating
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc/install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/install/dependencies.html">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/dependencies.html#dbus-pydbus">DBus: pydbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/dependencies.html#systemd-startup-notification"><cite>systemd</cite> Startup Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/dependencies.html#flask">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/dependencies.html#gradients-interpolation-graphs">Gradients, Interpolation, Graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/dependencies.html#gpio-libgpiod">GPIO: <cite>libgpiod</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc/install/dependencies.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc/install/dependencies.html#links">Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/install/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#get-the-source">Get the Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#bootloader">Bootloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#create-user">Create User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#dbus-configuration">DBus Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#finally-startup">Finally: Startup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc/motivation.html">Motivation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/motivation.html#current-goal-keep-my-house-warm">Current Goal: Keep my House Warm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/motivation.html#rant">Rant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/motivation.html#plan">Plan</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc/faschingbauer/index.html">Faschingbauer Installation Specifics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/faschingbauer/gpio/gpio.html">GPIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/faschingbauer/gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/faschingbauer/w1/w1.html#links">Links</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/faschingbauer/w1/w1.html#issues">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc/marketing/index.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc/marketing/glt2020/blink.html#cv">CV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc/marketing/glt2020/blink.html#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc/marketing/glt2020/blink.html#topics">Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="doc/marketing/glt2020/blink.html#use-case">Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc/marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc/marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/marketing/heating.html">OpenHeating Presentation Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc/misc/index.html">Miscellaneous Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/misc/dbus.html">D-Bus Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/misc/dbus.html#calling-object-methods">Calling Object Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="doc/misc/dbus.html#thermometer-service">Thermometer Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="doc/misc/dbus.html#introspection">Introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/misc/dbus.html#debug-monitor">Debug, Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/misc/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/misc/panel.html#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/misc/panel.html#autostart">Autostart</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc/future/index.html">What the Future Maybe Brings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/future/stack.html">Stacks (Hanging)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/future/stack.html#hotwater-circuit-overtake">Hotwater Circuit Overtake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/future/stack.html#component-documentation">Component Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/future/ideas.html">Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/future/ideas.html#panel">Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/future/ideas.html#project-structure-cleanup">Project Structure Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/future/ideas.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/future/ideas.html#more-heatingisms">More Heatingisms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Source Code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc/github.html">Getting the Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/main.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/main.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#executable">Executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/switches.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Switches</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/switches.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/switches.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/switches.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/circuits.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Circuits</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/circuits.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/circuits.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/circuits.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/oil.html">Oil Burner Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/wood.html">Wood Oven Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/room.html">Room Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/boiler.html">Warm Water</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">openheating</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>OpenHeating: Open Source Heating Control System</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openheating-open-source-heating-control-system">
+<h1>OpenHeating: Open Source Heating Control System<a class="headerlink" href="#openheating-open-source-heating-control-system" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="why-yet-another-heating-system">
+<h2>Why Yet Another Heating System?<a class="headerlink" href="#why-yet-another-heating-system" title="Permalink to this headline">¶</a></h2>
+<p>Off the shelf heating control units are rather limited.</p>
+<ul class="simple">
+<li><p>Configuration is rather lame in all cases. Heating control’s
+paradigm has always been “16 bit microcontroller and 7-segment
+displays” as it seems.</p></li>
+<li><p>Cannot control an arbitrary number of heating circuits. Chances are
+that you have to buy a new (and more expensive) control unit when
+you decide to add one more circuit to the system.</p></li>
+<li><p>Cannot coordinate multiple heat sources. For example, here in <a class="reference external" href="http://www.faschingbauer.co.at/">my</a> house there is an old and dirty
+oil firing, and a newer wood stove in the living room. No way with
+any affordable control unit.</p></li>
+</ul>
+<p>OpenHeating addresses all these limitations, especially the “multiple
+heat sources” limitation. It runs on Linux (my installation is a
+<a class="reference external" href="https://www.raspberrypi.org/">Raspberry</a>), so yes there is
+internet and many possibilities.</p>
+<p>This is a diagram of the situation in my house; click on the symbols
+to get to the software components behind them. Don’t be upset if a
+link you click points to a placeholder page - I’m working on it :-)</p>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 250 200">
+
+  <defs>
+    <g id="pump">
+      <circle
+          cx="10" cy="10" r="10"
+          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
+      <polyline
+          points="20,10 4,18 4,2"
+          style="fill:rgb(0,0,0)"/>
+      />
+    </g>
+    <g id="mixer">
+      <polyline
+          points="0,5 0,15 10,10 0,5"
+          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
+      <polyline
+          points="20,5 20,15 10,10 20,5"
+          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
+      <polyline
+          points="5,0 15,0 10,10 5,0"
+          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
+    </g>
+  </defs>
+
+  <a xlink:href="doc/components/wood.html">
+    <image
+      id="holzofen"
+      xlink:href="_static/heating-diagram/holzofen.png"
+      x="0" y="0"
+      width="50" height="50" />
+  </a>
+
+  <a xlink:href="doc/components/oil.html">
+    <image
+      id="oelbrenner"
+      xlink:href="_static/heating-diagram/oelbrenner.png"
+      x="0" y="130"
+      width="50" height="70"
+      style="fill:none;stroke-width:0.5;stroke:rgb(0,0,0)"/>
+  </a>
+
+  <a xlink:href="doc/components/room.html">
+    <image
+      id="radiatoren"
+      xlink:href="_static/heating-diagram/radiator.png"
+      x="200" y="0"
+      width="50" height="50" />
+  </a>
+
+  <a xlink:href="doc/components/boiler.html">
+    <image
+      id="boiler"
+      xlink:href="_static/heating-diagram/boiler.png"
+      x="200" y="120"
+      width="50" height="80" />
+  </a>
+
+  <use
+      id="mischer-holz-oel"
+      xlink:href="#mixer"
+      x="80" y="160" />
+
+  <!-- VORLAUF OELBRENNER -->
+  <line
+      id="vl-oelbrenner"
+      x1="50" y1="170" x2="80" y2="170"
+      style="stroke-width:2;stroke:rgb(255,0,0)"/>
+  <!-- VORLAUF HOLZOFEN -->
+  <polyline
+      id="vl-holzofen"
+      points="50,20 90,20 90,160"
+      style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
+
+  <!-- RUECKLAUF HOLZOFEN -->
+  <line
+      id="rl-holzofen-1"
+      x1="70" y1="183" x2="70" y2="150"
+      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
+  <line
+      id="rl-vl-holzofen"
+      x1="80" y1="140" x2="90" y2="140"
+      style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
+  <use
+      id="mischer-holz"
+      xlink:href="#mixer"
+      transform="rotate(90,70,140)"
+      x="60" y="130" />
+  <line
+      id="rl-holzofen-2"
+      x1="70" y1="110" x2="70" y2="130"
+      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
+
+  <a xlink:href="doc/components/circuits.html">
+    <use
+      id="pumpe-holzofen"
+      xlink:href="#pump"
+      transform="rotate(-90,70,100)"
+      x="60" y="90" />
+  </a>
+
+  <polyline
+      id="rl-holzofen-2"
+      points="70,90 70,30 50,30"
+      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
+
+  <!-- VORLAUF WARMWASSER -->
+  <line
+      id="vl-warmwasser-1"
+      x1="100" y1="170" x2="160" y2="170"
+      style="stroke-width:2;stroke:rgb(255,0,0)"/>
+  <a xlink:href="doc/components/circuits.html">
+    <use
+      id="pumpe-warmwasser"
+      xlink:href="#pump"
+      x="160" y="160" />
+  </a>
+  <line
+      id="vl-warmwasser-2"
+      x1="180" y1="170" x2="200" y2="170"
+      style="stroke-width:2;stroke:rgb(255,0,0)"/>
+
+  <!-- VORLAUF HEIZKREIS -->
+  <line
+      id="vl-heizkreis-1"
+      x1="140" y1="170" x2="140" y2="150"
+      style="stroke-width:2;stroke:rgb(255,0,0)"/>
+  <a xlink:href="doc/components/circuits.html">
+    <use
+      id="mischer-heizkreis"
+      xlink:href="#mixer"
+      transform="rotate(-90,140,140)"
+      x="130" y="130" />
+  </a>
+  <line
+      id="vl-heizkreis-2"
+      x1="140" y1="130" x2="140" y2="110"
+      style="stroke-width:2;stroke:rgb(255,0,0)"/>
+  <a xlink:href="doc/components/circuits.html">
+    <use
+      id="pumpe-heizkreis"
+      xlink:href="#pump"
+      transform="rotate(-90,140,100)"
+      x="130" y="90" />
+  </a>
+  <polyline
+      id="vl-heizkreis-3"
+      points="140,90 140,20 200,20"
+      style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
+
+  <!-- RUECKLAUF HEIZKREIS -->
+  <polyline
+      id="rl-heizkreis-1"
+      points="200,30 120,30 120,183"
+      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
+  <line
+      id="rl-vl-heizkreis"
+      x1="120" y1="140" x2="130" y2="140"
+      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
+
+  <!-- GEMEINSAMER RUECKLAUF -->
+  <line
+      id="rl-gemeinsam"
+      x1="50" y1="183" x2="200" y2="183"
+      style="stroke-width:2;stroke:rgb(0,0,255)"/>
+
+</svg></div>
+<div class="section" id="inner-beauty">
+<h2>Inner Beauty<a class="headerlink" href="#inner-beauty" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Written in Python</p></li>
+<li><p>Components loosely coupled in D-Bus</p></li>
+<li><p>Components managed with systemd</p></li>
+<li><p>GPIOs controlled not using the <a class="reference external" href="https://www.kernel.org/doc/Documentation/gpio/sysfs.txt">sysfs interface</a> (which
+is deprecated), but rather with the newer <a class="reference external" href="https://github.com/brgl/libgpiod/blob/master/README">gpiod</a>.</p></li>
+<li><p>Web done with <a class="reference external" href="https://palletsprojects.com/p/flask/">flask</a>.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="doc/install/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jörg Faschingbauer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
