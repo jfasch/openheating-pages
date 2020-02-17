@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using Github Pages &mdash; openheating 0.0.0 documentation</title>
+  <title>Github Pages as Hosting Platform &mdash; openheating 0.0.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="What the Future Maybe Brings" href="../../future/index.html" />
+    <link rel="next" title="Deploying Sphinx Generated Documentation to Github Pages" href="sphinx-gh-pages.html" />
     <link rel="prev" title="Panel" href="../panel.html" /> 
 </head>
 
@@ -166,10 +166,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../panel.html#autostart">Autostart</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Github Pages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-site-publication-repo">Create “Site Publication Repo”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#time-for-deployment">Time for Deployment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Github Pages as Hosting Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="custom-domain-gh-pages.html">Blah</a></li>
 </ul>
 </li>
 </ul>
@@ -274,7 +278,7 @@
         
           <li><a href="../index.html">Miscellaneous Documentation</a> &raquo;</li>
         
-      <li>Using Github Pages</li>
+      <li>Github Pages as Hosting Platform</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -293,121 +297,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="using-github-pages">
-<h1><a class="toc-backref" href="#id3">Using Github Pages</a><a class="headerlink" href="#using-github-pages" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#using-github-pages" id="id3">Using Github Pages</a></p>
+  <div class="section" id="github-pages-as-hosting-platform">
+<h1>Github Pages as Hosting Platform<a class="headerlink" href="#github-pages-as-hosting-platform" title="Permalink to this headline">¶</a></h1>
+<p>Github Pages is a website hosting feature provided by Github. It can
+be used by users, organizations and projects (like this one) to deploy
+and serve websites.</p>
+<p>By default (this is a big part of the feature) you have a repository
+containing <a class="reference external" href="https://daringfireball.net/projects/markdown/">markdown</a> source; it is that
+source that is built by the Github Pages machinery, using the <a class="reference external" href="https://jekyllrb.com/">Jekyll</a> static site generator, to form the
+website. The OpenHeating project uses Sphinx, so Jekyll does not make
+any sense. Nevertheless we want to host the generated
+content. <a class="reference internal" href="sphinx-gh-pages.html"><span class="doc">Read here</span></a> for how this is done.</p>
+<p>Another feature is you can assign a <a class="reference external" href="https://help.github.com/en/github/working-with-github-pages/about-custom-domains-and-github-pages">“Custom domain”</a>
+to a website you serve through Github Pages. OpenHeating’s domain is
+<code class="docutils literal notranslate"><span class="pre">openheating.org</span></code>; <a class="reference internal" href="custom-domain-gh-pages.html"><span class="doc">read here</span></a> how we
+point <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code> at our Github-served website.</p>
+<div class="toctree-wrapper compound">
 <ul>
-<li><p><a class="reference internal" href="#create-site-publication-repo" id="id4">Create “Site Publication Repo”</a></p></li>
-<li><p><a class="reference internal" href="#configure-github-pages-for-jfasch-openheating-pages" id="id5">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></p></li>
-<li><p><a class="reference internal" href="#time-for-deployment" id="id6">Time for Deployment</a></p></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="custom-domain-gh-pages.html">Blah</a></li>
 </ul>
-</div>
-<div class="section" id="create-site-publication-repo">
-<h2><a class="toc-backref" href="#id4">Create “Site Publication Repo”</a><a class="headerlink" href="#create-site-publication-repo" title="Permalink to this headline">¶</a></h2>
-<p>No, we do <em>not</em> pollute our source repo <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating</span></code>
-with binary content, as Github suggests. This reminds me of a company
-I worked for many years ago:</p>
-<ul class="simple">
-<li><p>They had a huge pile of incomprehensible C/C++ code.</p></li>
-<li><p>They built all that in the source tree (no, not with CMake or meson
-or something else that can do out-of-source builds, but with another
-huge pile of Doze <code class="docutils literal notranslate"><span class="pre">cmd</span></code> code.).</p></li>
-<li><p>They committed the build output. <strong>Yes</strong>: every build they made was
-a record in their version control system. The same repo that
-contained the source.</p></li>
-<li><p><strong>Effect</strong>: developers did not develop most of their time, but wait
-for VC operations. Rational Clearcase can be blamed for many issues,
-but not for that I’d say.</p></li>
-<li><p>The company does not exist anymore.</p></li>
-</ul>
-<p><em>So</em>, in parallel to the <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating</span></code> repository, I
-create the <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code> repository. The intent is
-to use the <code class="file docutils literal notranslate"><span class="pre">openheating-pages/docs/</span></code> subdirectory as a
-<em>deployment location</em> for the Sphinx-generated output from
-<code class="file docutils literal notranslate"><span class="pre">openheating</span></code> - one commit/push per deployment.</p>
-<p>Test that, by populating <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code> with dummy
-HTML content. Ah, Jekyll: we provide static files which are not source
-code, technically, so we do not want Github to build our site with
-Jekyll. This is what the <code class="file docutils literal notranslate"><span class="pre">.nojekyll</span></code> file tells them to -
-suppress build.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mkdir docs/
-$ cat <span class="s">&lt;&lt;EOF &gt; docs/index.html</span>
-<span class="s">&lt;!DOCTYPE html&gt;</span>
-<span class="s">&lt;head&gt;</span>
-<span class="s">  &lt;title&gt;Dummy&lt;/title&gt;</span>
-<span class="s">&lt;/head&gt;</span>
-
-<span class="s">&lt;body&gt;</span>
-<span class="s">  &lt;p&gt;Hmm. Appears to work.&lt;/p&gt;</span>
-<span class="s">&lt;/body&gt;</span>
-<span class="s">&lt;/html&gt;</span>
-<span class="s">EOF</span>
-$ touch docs/.nojekyll
-$ git add docs/index.html docs/.nojekyll
-$ git commit -am <span class="nb">test</span>
-$ git push
-</pre></div>
-</div>
-<p>Maybe check on the Github page that the upstream content matches what
-we just created.</p>
-</div>
-<div class="section" id="configure-github-pages-for-jfasch-openheating-pages">
-<h2><a class="toc-backref" href="#id5">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a><a class="headerlink" href="#configure-github-pages-for-jfasch-openheating-pages" title="Permalink to this headline">¶</a></h2>
-<p>Make sure you are logged in (I made that mistake and did not find the
-“Settings” tab :-) ). Go to the “Settings tab.</p>
-<p>We intend to serve content from <code class="file docutils literal notranslate"><span class="pre">docs/</span></code>, so select “master
-branch / docs folder”. Scroll to the “Github Pages” section, and
-select that constellation.</p>
-<img alt="../../../_images/master-docs.png" src="../../../_images/master-docs.png" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>You will not see the “Your site is published at …” message
-immediately; the Github deployment machinery takes a while.</p></li>
-<li><p>If the message appears, eventually, an innocent click on the link
-may lead to a 404 error. Edit the URL in the bar to explicitly
-add <code class="file docutils literal notranslate"><span class="pre">.../index.html</span></code>, or wait another few minutes.</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="time-for-deployment">
-<h2><a class="toc-backref" href="#id6">Time for Deployment</a><a class="headerlink" href="#time-for-deployment" title="Permalink to this headline">¶</a></h2>
-<p>Everything is in place now,</p>
-<ul class="simple">
-<li><p>We have a local <code class="file docutils literal notranslate"><span class="pre">$HOME/openheating</span></code> (say) clone (and its
-upstream repository that we work from)</p></li>
-<li><p>We have an upstream <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code> repository; new
-revisions that are pushed are automatically deployed to pages.</p></li>
-<li><p>We have its local <code class="file docutils literal notranslate"><span class="pre">$HOME/openheating-pages</span></code> clone.</p></li>
-</ul>
-<p>Lets the deployment dance for the first time; this will be repeated
-for all further deployments. (This cries for scripting, but that’s
-another story.)</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Build openheating site (with Sphinx)</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/openheating
-$ make html
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Copy build over to deployment repo, and deploy</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/openheating-pages
-$ git rm -r docs/
-$ cp -r <span class="nv">$HOME</span>/openheating/_build/html/ docs/
-$ git add --all docs/
-$ git commit -am <span class="s1">&#39;shiny new openheating site version&#39;</span>
-$ git push
-</pre></div>
-</div>
-</div>
-<p>Wait a while. You may nervously watch the “Settings” tab of
-:<a class="reference external" href="file:jfasch/openheating-pages">file:jfasch/openheating-pages</a> if you want, until machinery is done.</p>
 </div>
 </div>
 
@@ -419,7 +333,7 @@ $ git push
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../future/index.html" class="btn btn-neutral float-right" title="What the Future Maybe Brings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sphinx-gh-pages.html" class="btn btn-neutral float-right" title="Deploying Sphinx Generated Documentation to Github Pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../panel.html" class="btn btn-neutral float-left" title="Panel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

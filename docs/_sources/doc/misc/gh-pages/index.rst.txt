@@ -1,111 +1,26 @@
-Using Github Pages
-==================
+Github Pages as Hosting Platform
+================================
 
-.. contents::
+Github Pages is a website hosting feature provided by Github. It can
+be used by users, organizations and projects (like this one) to deploy
+and serve websites.
 
-Create "Site Publication Repo"
-------------------------------
+By default (this is a big part of the feature) you have a repository
+containing `markdown
+<https://daringfireball.net/projects/markdown/>`__ source; it is that
+source that is built by the Github Pages machinery, using the `Jekyll
+<https://jekyllrb.com/>`__ static site generator, to form the
+website. The OpenHeating project uses Sphinx, so Jekyll does not make
+any sense. Nevertheless we want to host the generated
+content. :doc:`Read here <sphinx-gh-pages>` for how this is done.
 
-No, we do *not* pollute our source repo :file:`jfasch/openheating`
-with binary content, as Github suggests. This reminds me of a company
-I worked for many years ago:
+Another feature is you can assign a `"Custom domain"
+<https://help.github.com/en/github/working-with-github-pages/about-custom-domains-and-github-pages>`__
+to a website you serve through Github Pages. OpenHeating's domain is
+``openheating.org``; :doc:`read here <custom-domain-gh-pages>` how we
+point ``www.openheating.org`` at our Github-served website.
 
-* They had a huge pile of incomprehensible C/C++ code.
-* They built all that in the source tree (no, not with CMake or meson
-  or something else that can do out-of-source builds, but with another
-  huge pile of Doze ``cmd`` code.).
-* They committed the build output. **Yes**: every build they made was
-  a record in their version control system. The same repo that
-  contained the source.
-* **Effect**: developers did not develop most of their time, but wait
-  for VC operations. Rational Clearcase can be blamed for many issues,
-  but not for that I'd say.
-* The company does not exist anymore.
+.. toctree::
 
-*So*, in parallel to the :file:`jfasch/openheating` repository, I
-create the :file:`jfasch/openheating-pages` repository. The intent is
-to use the :file:`openheating-pages/docs/` subdirectory as a
-*deployment location* for the Sphinx-generated output from
-:file:`openheating` - one commit/push per deployment.
-
-Test that, by populating :file:`jfasch/openheating-pages` with dummy
-HTML content. Ah, Jekyll: we provide static files which are not source
-code, technically, so we do not want Github to build our site with
-Jekyll. This is what the :file:`.nojekyll` file tells them to -
-suppress build.
-
-.. code-block:: shell
-
-   $ mkdir docs/
-   $ cat <<EOF > docs/index.html
-   <!DOCTYPE html>
-   <head>
-     <title>Dummy</title>
-   </head>
-   
-   <body>
-     <p>Hmm. Appears to work.</p>
-   </body>
-   </html>
-   EOF
-   $ touch docs/.nojekyll
-   $ git add docs/index.html docs/.nojekyll
-   $ git commit -am test
-   $ git push
-
-Maybe check on the Github page that the upstream content matches what
-we just created.
-
-Configure Github Pages for :file:`jfasch/openheating-pages`
------------------------------------------------------------
-
-Make sure you are logged in (I made that mistake and did not find the
-"Settings" tab :-) ). Go to the "Settings tab.
-
-We intend to serve content from :file:`docs/`, so select "master
-branch / docs folder". Scroll to the "Github Pages" section, and
-select that constellation.
-
-.. image:: master-docs.png
-
-.. note::
-
-   * You will not see the "Your site is published at ..." message
-     immediately; the Github deployment machinery takes a while.
-   * If the message appears, eventually, an innocent click on the link
-     may lead to a 404 error. Edit the URL in the bar to explicitly
-     add :file:`.../index.html`, or wait another few minutes.
-
-Time for Deployment
--------------------
-
-Everything is in place now,
-
-* We have a local :file:`$HOME/openheating` (say) clone (and its
-  upstream repository that we work from)
-* We have an upstream :file:`jfasch/openheating-pages` repository; new
-  revisions that are pushed are automatically deployed to pages.
-* We have its local :file:`$HOME/openheating-pages` clone.
-
-Lets the deployment dance for the first time; this will be repeated
-for all further deployments. (This cries for scripting, but that's
-another story.)
-
-.. code-block:: shell
-   :caption: Build openheating site (with Sphinx)
-
-   $ cd $HOME/openheating
-   $ make html
-
-.. code-block:: shell
-   :caption: Copy build over to deployment repo, and deploy
-
-   $ cd $HOME/openheating-pages
-   $ git rm -r docs/
-   $ cp -r $HOME/openheating/_build/html/ docs/
-   $ git add --all docs/
-   $ git commit -am 'shiny new openheating site version'
-   $ git push
-
-Wait a while. You may nervously watch the "Settings" tab of
-:file:jfasch/openheating-pages if you want, until machinery is done.
+   sphinx-gh-pages
+   custom-domain-gh-pages
