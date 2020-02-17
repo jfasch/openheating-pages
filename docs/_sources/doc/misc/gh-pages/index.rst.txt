@@ -75,3 +75,37 @@ select that constellation.
    * If the message appears, eventually, an innocent click on the link
      may lead to a 404 error. Edit the URL in the bar to explicitly
      add :file:`.../index.html`, or wait another few minutes.
+
+Time for Deployment
+-------------------
+
+Everything is in place now,
+
+* We have a local :file:`$HOME/openheating` (say) clone (and its
+  upstream repository that we work from)
+* We have an upstream :file:`jfasch/openheating-pages` repository; new
+  revisions that are pushed are automatically deployed to pages.
+* We have its local :file:`$HOME/openheating-pages` clone.
+
+Lets the deployment dance for the first time; this will be repeated
+for all further deployments. (This cries for scripting, but that's
+another story.)
+
+.. code-block:: shell
+   :caption: Build openheating site (with Sphinx)
+
+   $ cd $HOME/openheating
+   $ make html
+
+.. code-block:: shell
+   :caption: Copy build over to deployment repo, and deploy
+
+   $ cd $HOME/openheating-pages
+   $ git rm -r docs/
+   $ cp -r $HOME/openheating/_build/html/ docs/
+   $ git add --all docs/
+   $ git commit -am 'shiny new openheating site version'
+   $ git push
+
+Wait a while. You may nervously watch the "Settings" tab of
+:file:jfasch/openheating-pages if you want, until machinery is done.

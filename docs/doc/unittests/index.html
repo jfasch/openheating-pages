@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Faschingbauer Installation Specifics &mdash; openheating 0.0.0 documentation</title>
+  <title>Running Unittests &mdash; openheating 0.0.0 documentation</title>
   
 
   
@@ -35,8 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="GPIO" href="gpio/gpio.html" />
-    <link rel="prev" title="Motivation" href="../motivation.html" /> 
+    <link rel="prev" title="Running Plant Under Simulation" href="../simulation/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,7 +80,7 @@
             
             
               <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install/dependencies.html">Dependencies</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../install/dependencies.html#dbus-pydbus">DBus: pydbus</a></li>
@@ -114,23 +113,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../motivation.html#plan">Plan</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Faschingbauer Installation Specifics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gpio/gpio.html">GPIO</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faschingbauer/index.html">Faschingbauer Installation Specifics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/gpio/gpio.html">GPIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#links">Links</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="w1/w1.html#issues">Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="electrics.html">Unsorted Electrical Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#issues">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
@@ -191,7 +190,7 @@
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
@@ -226,7 +225,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Running Plant Under Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unittests/index.html">Running Unittests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Unittests</a></li>
 </ul>
 
             
@@ -272,13 +271,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Faschingbauer Installation Specifics</li>
+      <li>Running Unittests</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/doc/faschingbauer/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/doc/unittests/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -291,16 +290,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="faschingbauer-installation-specifics">
-<h1>Faschingbauer Installation Specifics<a class="headerlink" href="#faschingbauer-installation-specifics" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gpio/gpio.html">GPIO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="w1/w1.html">RJ11 Plugs, Pins</a></li>
-<li class="toctree-l1"><a class="reference internal" href="w1/w1.html#w1-gpio">w1-gpio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="w1/w1.html#issues">Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electrics.html">Unsorted Electrical Things</a></li>
-</ul>
+  <div class="section" id="running-unittests">
+<h1>Running Unittests<a class="headerlink" href="#running-unittests" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Write that</p>
 </div>
 </div>
 
@@ -312,10 +306,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gpio/gpio.html" class="btn btn-neutral float-right" title="GPIO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../motivation.html" class="btn btn-neutral float-left" title="Motivation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../simulation/index.html" class="btn btn-neutral float-left" title="Running Plant Under Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
