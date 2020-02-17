@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dependencies &mdash; openheating 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Installation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> openheating
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dbus-pydbus">DBus: pydbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systemd-startup-notification"><cite>systemd</cite> Startup Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flask">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gradients-interpolation-graphs">Gradients, Interpolation, Graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpio-libgpiod">GPIO: <cite>libgpiod</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#links">Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#get-the-source">Get the Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#bootloader">Bootloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#create-user">Create User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#dbus-configuration">DBus Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#finally-startup">Finally: Startup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Motivation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../motivation.html#current-goal-keep-my-house-warm">Current Goal: Keep my House Warm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motivation.html#rant">Rant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motivation.html#plan">Plan</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faschingbauer/index.html">Faschingbauer Installation Specifics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/gpio/gpio.html">GPIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#links">Links</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#issues">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#cv">CV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#topics">Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#use-case">Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../marketing/heating.html">OpenHeating Presentation Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">Miscellaneous Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/dbus.html">D-Bus Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/dbus.html#calling-object-methods">Calling Object Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/dbus.html#thermometer-service">Thermometer Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/dbus.html#introspection">Introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/dbus.html#debug-monitor">Debug, Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#autostart">Autostart</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Using Github Pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../future/index.html">What the Future Maybe Brings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../future/stack.html">Stacks (Hanging)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/stack.html#hotwater-circuit-overtake">Hotwater Circuit Overtake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/stack.html#component-documentation">Component Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../future/ideas.html">Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#panel">Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#project-structure-cleanup">Project Structure Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#more-heatingisms">More Heatingisms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Source Code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../github.html">Getting the Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/main.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/main.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/main.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#executable">Executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#objects-provided">Objects Provided</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/switches.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Switches</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/switches.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/switches.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/switches.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/circuits.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Circuits</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/circuits.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/circuits.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/circuits.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/oil.html">Oil Burner Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/wood.html">Wood Oven Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/room.html">Room Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/boiler.html">Warm Water</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">openheating</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Dependencies</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/doc/install/dependencies.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dependencies">
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dbus-pydbus">
+<h2>DBus: pydbus<a class="headerlink" href="#dbus-pydbus" title="Permalink to this headline">¶</a></h2>
+<p>We distribute components over <a class="reference external" href="http://dbus.freedesktop.org/">DBus</a>,
+using <a class="reference external" href="https://github.com/LEW21/pydbus">pydbus</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip3 install --system pydbus</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="systemd-startup-notification">
+<h2><cite>systemd</cite> Startup Notification<a class="headerlink" href="#systemd-startup-notification" title="Permalink to this headline">¶</a></h2>
+<p>(At least) <cite>openheating-http.py</cite> uses it to notify <cite>systemd</cite> that it
+has finished startup and is running. (The HTTP service is
+<cite>Type=notify</cite>, and not <cite>Type=dbus</cite> as the others.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apt install python3-systemd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="flask">
+<h2>Flask<a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h2>
+<p>Web is done using <a class="reference external" href="https://www.palletsprojects.com/p/flask/">Flask</a>. Simple and easy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip3 install --system flask</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gradients-interpolation-graphs">
+<h2>Gradients, Interpolation, Graphs<a class="headerlink" href="#gradients-interpolation-graphs" title="Permalink to this headline">¶</a></h2>
+<p>Web has fancy temperature charts, and I believe there’s a spline
+interpolation done somewhere.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip3 install --system numpy scipy matplotlib</span>
+<span class="c1"># pip3 install --upgrade --system numpy scipy matplotlib</span>
+</pre></div>
+</div>
+<p>(Upgrading makes sense, especially with these)</p>
+</div>
+<div class="section" id="gpio-libgpiod">
+<h2>GPIO: <cite>libgpiod</cite><a class="headerlink" href="#gpio-libgpiod" title="Permalink to this headline">¶</a></h2>
+<p><cite>libgpiod</cite> is a C library directly on top of the descriptor based GPIO
+interface.</p>
+<p>The “integer based” sysfs interface has been deprecated a while ago
+(Linux 4.8). It would be sufficient for our purposes - plain set/get
+-, but it is on the way out.</p>
+<p><a class="reference external" href="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/">libgpiod</a> has a
+Python binding, but unfortunately there is no Raspbian package as of
+2019-07-29 that has it. (There is <a class="reference external" href="https://pypi.org/project/gpio-next/">gpio-next</a> on PyPI, but it is maintained
+independently from libgpiod.)</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>This is a bit tedious (hope is that Raspbian’s <code class="docutils literal notranslate"><span class="pre">libgpiod</span></code> package
+will bring the Python binding in future versions). <code class="docutils literal notranslate"><span class="pre">libgpiod</span></code>
+requires the <a class="reference external" href="https://www.gnu.org/software/autoconf-archive/">autoconf archive</a> which definitely
+needs some love.</p>
+<p>Check build dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apt install autoconf</span>
+<span class="c1"># apt install libtool</span>
+</pre></div>
+</div>
+<p>Build and install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/hrmpf
+$ cd ~/hrmpf
+$ git clone git://git.sv.gnu.org/autoconf-archive.git
+$ git clone git://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
+$ cp -r ~/hrmpf/autoconf-archive/m4 ~/hrmpf/libgpiod/m4  # see rant below
+$ cd libgpiod
+$ autoreconf --force --install --verbose
+$ ./configure --prefix=/usr/local --enable-bindings-python
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p><em>Rant</em>: I haven’t found a way to set <code class="docutils literal notranslate"><span class="pre">aclocal</span></code>’s M4 path into
+<code class="docutils literal notranslate"><span class="pre">autoconf-archive/m4</span></code>, so I simply copy it to <code class="docutils literal notranslate"><span class="pre">libgpiod/m4/</span></code>.</p>
+<p>Set paths (take the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> value from the messages of the
+<code class="docutils literal notranslate"><span class="pre">libgpiod</span></code> build, as it depends on the Python version you are using):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+$ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+</pre></div>
+</div>
+<p>Better yet, create <code class="docutils literal notranslate"><span class="pre">/etc/profile.d/openheating.sh</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+</pre></div>
+</div>
+<p>See if all is well,:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3
+Python 3.5.3 (default, Sep 27 2018, 17:25:39)
+[GCC 6.3.0 20170516] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import gpiod
+</pre></div>
+</div>
+</div>
+<div class="section" id="links">
+<h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/">libgpiod</a></p></li>
+<li><p><a class="reference external" href="https://www.kernel.org/doc/Documentation/gpio/consumer.txt">Kernel Doc</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jörg Faschingbauer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

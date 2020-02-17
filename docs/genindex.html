@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OpenHeating: Open Source Heating Control System &mdash; openheating 0.0.0 documentation</title>
+  <title>Index &mdash; openheating 0.0.0 documentation</title>
   
 
   
@@ -33,9 +34,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="doc/install/index.html" /> 
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -49,7 +49,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> openheating
+            <a href="index.html" class="icon icon-home"> openheating
           
 
           
@@ -237,7 +237,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">openheating</a>
+          <a href="index.html">openheating</a>
         
       </nav>
 
@@ -266,16 +266,14 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>OpenHeating: Open Source Heating Control System</li>
+      <li>Index</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -287,225 +285,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="openheating-open-source-heating-control-system">
-<h1>OpenHeating: Open Source Heating Control System<a class="headerlink" href="#openheating-open-source-heating-control-system" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#T"><strong>T</strong></a>
+ 
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="section" id="why-yet-another-heating-system">
-<h2>Why Yet Another Heating System?<a class="headerlink" href="#why-yet-another-heating-system" title="Permalink to this headline">¶</a></h2>
-<p>Off the shelf heating control units are rather limited.</p>
-<ul class="simple">
-<li><p>Configuration is rather lame in all cases. Heating control’s
-paradigm has always been “16 bit microcontroller and 7-segment
-displays” as it seems.</p></li>
-<li><p>Cannot control an arbitrary number of heating circuits. Chances are
-that you have to buy a new (and more expensive) control unit when
-you decide to add one more circuit to the system.</p></li>
-<li><p>Cannot coordinate multiple heat sources. For example, here in <a class="reference external" href="http://www.faschingbauer.co.at/">my</a> house there is an old and dirty
-oil firing, and a newer wood stove in the living room. No way with
-any affordable control unit.</p></li>
-</ul>
-<p>OpenHeating addresses all these limitations, especially the “multiple
-heat sources” limitation. It runs on Linux (my installation is a
-<a class="reference external" href="https://www.raspberrypi.org/">Raspberry</a>), so yes there is
-internet and many possibilities.</p>
-<p>This is a diagram of the situation in my house; click on the symbols
-to get to the software components behind them. Don’t be upset if a
-link you click points to a placeholder page - I’m working on it :-)</p>
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 250 200">
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/thermometers.html#openheating.dbus.thermometer.Thermometer_Server">Thermometer_Server (class in openheating.dbus.thermometer)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/thermometers.html#openheating.dbus.thermometer_center.ThermometerCenter_Server">ThermometerCenter_Server (class in openheating.dbus.thermometer_center)</a>
+</li>
+  </ul></td>
+</tr></table>
 
-  <defs>
-    <g id="pump">
-      <circle
-          cx="10" cy="10" r="10"
-          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
-      <polyline
-          points="20,10 4,18 4,2"
-          style="fill:rgb(0,0,0)"/>
-      />
-    </g>
-    <g id="mixer">
-      <polyline
-          points="0,5 0,15 10,10 0,5"
-          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
-      <polyline
-          points="20,5 20,15 10,10 20,5"
-          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
-      <polyline
-          points="5,0 15,0 10,10 5,0"
-          style="fill:rgb(255,255,255);stroke-width:0.5;stroke:rgb(0,0,0)"/>
-    </g>
-  </defs>
-
-  <a xlink:href="doc/components/wood.html">
-    <image
-      id="holzofen"
-      xlink:href="_static/heating-diagram/holzofen.png"
-      x="0" y="0"
-      width="50" height="50" />
-  </a>
-
-  <a xlink:href="doc/components/oil.html">
-    <image
-      id="oelbrenner"
-      xlink:href="_static/heating-diagram/oelbrenner.png"
-      x="0" y="130"
-      width="50" height="70"
-      style="fill:none;stroke-width:0.5;stroke:rgb(0,0,0)"/>
-  </a>
-
-  <a xlink:href="doc/components/room.html">
-    <image
-      id="radiatoren"
-      xlink:href="_static/heating-diagram/radiator.png"
-      x="200" y="0"
-      width="50" height="50" />
-  </a>
-
-  <a xlink:href="doc/components/boiler.html">
-    <image
-      id="boiler"
-      xlink:href="_static/heating-diagram/boiler.png"
-      x="200" y="120"
-      width="50" height="80" />
-  </a>
-
-  <use
-      id="mischer-holz-oel"
-      xlink:href="#mixer"
-      x="80" y="160" />
-
-  <!-- VORLAUF OELBRENNER -->
-  <line
-      id="vl-oelbrenner"
-      x1="50" y1="170" x2="80" y2="170"
-      style="stroke-width:2;stroke:rgb(255,0,0)"/>
-  <!-- VORLAUF HOLZOFEN -->
-  <polyline
-      id="vl-holzofen"
-      points="50,20 90,20 90,160"
-      style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
-
-  <!-- RUECKLAUF HOLZOFEN -->
-  <line
-      id="rl-holzofen-1"
-      x1="70" y1="183" x2="70" y2="150"
-      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
-  <line
-      id="rl-vl-holzofen"
-      x1="80" y1="140" x2="90" y2="140"
-      style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
-  <use
-      id="mischer-holz"
-      xlink:href="#mixer"
-      transform="rotate(90,70,140)"
-      x="60" y="130" />
-  <line
-      id="rl-holzofen-2"
-      x1="70" y1="110" x2="70" y2="130"
-      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
-
-  <a xlink:href="doc/components/circuits.html">
-    <use
-      id="pumpe-holzofen"
-      xlink:href="#pump"
-      transform="rotate(-90,70,100)"
-      x="60" y="90" />
-  </a>
-
-  <polyline
-      id="rl-holzofen-2"
-      points="70,90 70,30 50,30"
-      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
-
-  <!-- VORLAUF WARMWASSER -->
-  <line
-      id="vl-warmwasser-1"
-      x1="100" y1="170" x2="160" y2="170"
-      style="stroke-width:2;stroke:rgb(255,0,0)"/>
-  <a xlink:href="doc/components/circuits.html">
-    <use
-      id="pumpe-warmwasser"
-      xlink:href="#pump"
-      x="160" y="160" />
-  </a>
-  <line
-      id="vl-warmwasser-2"
-      x1="180" y1="170" x2="200" y2="170"
-      style="stroke-width:2;stroke:rgb(255,0,0)"/>
-
-  <!-- VORLAUF HEIZKREIS -->
-  <line
-      id="vl-heizkreis-1"
-      x1="140" y1="170" x2="140" y2="150"
-      style="stroke-width:2;stroke:rgb(255,0,0)"/>
-  <a xlink:href="doc/components/circuits.html">
-    <use
-      id="mischer-heizkreis"
-      xlink:href="#mixer"
-      transform="rotate(-90,140,140)"
-      x="130" y="130" />
-  </a>
-  <line
-      id="vl-heizkreis-2"
-      x1="140" y1="130" x2="140" y2="110"
-      style="stroke-width:2;stroke:rgb(255,0,0)"/>
-  <a xlink:href="doc/components/circuits.html">
-    <use
-      id="pumpe-heizkreis"
-      xlink:href="#pump"
-      transform="rotate(-90,140,100)"
-      x="130" y="90" />
-  </a>
-  <polyline
-      id="vl-heizkreis-3"
-      points="140,90 140,20 200,20"
-      style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
-
-  <!-- RUECKLAUF HEIZKREIS -->
-  <polyline
-      id="rl-heizkreis-1"
-      points="200,30 120,30 120,183"
-      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
-  <line
-      id="rl-vl-heizkreis"
-      x1="120" y1="140" x2="130" y2="140"
-      style="fill:none;stroke-width:2;stroke:rgb(0,0,255)"/>
-
-  <!-- GEMEINSAMER RUECKLAUF -->
-  <line
-      id="rl-gemeinsam"
-      x1="50" y1="183" x2="200" y2="183"
-      style="stroke-width:2;stroke:rgb(0,0,255)"/>
-
-</svg></div>
-<div class="section" id="inner-beauty">
-<h2>Inner Beauty<a class="headerlink" href="#inner-beauty" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Written in Python</p></li>
-<li><p>Components loosely coupled in D-Bus</p></li>
-<li><p>Components managed with systemd</p></li>
-<li><p>GPIOs controlled not using the <a class="reference external" href="https://www.kernel.org/doc/Documentation/gpio/sysfs.txt">sysfs interface</a> (which
-is deprecated), but rather with the newer <a class="reference external" href="https://github.com/brgl/libgpiod/blob/master/README">gpiod</a>.</p></li>
-<li><p>Web done with <a class="reference external" href="https://palletsprojects.com/p/flask/">flask</a>.</p></li>
-</ul>
-</div>
-</div>
 
 
            </div>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="doc/install/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>

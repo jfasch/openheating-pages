@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RJ11 Plugs, Pins &mdash; openheating 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Unsorted Electrical Things" href="../electrics.html" />
+    <link rel="prev" title="GPIO" href="../gpio/gpio.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> openheating
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install/dependencies.html">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../install/dependencies.html#dbus-pydbus">DBus: pydbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/dependencies.html#systemd-startup-notification"><cite>systemd</cite> Startup Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/dependencies.html#flask">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/dependencies.html#gradients-interpolation-graphs">Gradients, Interpolation, Graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/dependencies.html#gpio-libgpiod">GPIO: <cite>libgpiod</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../install/dependencies.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../install/dependencies.html#links">Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../install/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#get-the-source">Get the Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#bootloader">Bootloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#create-user">Create User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#dbus-configuration">DBus Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#finally-startup">Finally: Startup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../motivation.html">Motivation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../motivation.html#current-goal-keep-my-house-warm">Current Goal: Keep my House Warm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motivation.html#rant">Rant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motivation.html#plan">Plan</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Faschingbauer Installation Specifics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../gpio/gpio.html">GPIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RJ11 Plugs, Pins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parasitic-vs-powered">Parasitic vs. Powered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#w1-gpio">w1-gpio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#issues">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electrics.html">Unsorted Electrical Things</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../marketing/index.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing/glt2020/blink.html#cv">CV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing/glt2020/blink.html#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing/glt2020/blink.html#topics">Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing/glt2020/blink.html#use-case">Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../marketing/heating.html">OpenHeating Presentation Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/index.html">Miscellaneous Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../misc/dbus.html">D-Bus Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/dbus.html#calling-object-methods">Calling Object Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../misc/dbus.html#thermometer-service">Thermometer Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/dbus.html#introspection">Introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/dbus.html#debug-monitor">Debug, Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/panel.html#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/panel.html#autostart">Autostart</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../misc/gh-pages/index.html">Using Github Pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/gh-pages/index.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../misc/gh-pages/index.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../future/index.html">What the Future Maybe Brings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../future/stack.html">Stacks (Hanging)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../future/stack.html#hotwater-circuit-overtake">Hotwater Circuit Overtake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../future/stack.html#component-documentation">Component Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../future/ideas.html">Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../future/ideas.html#panel">Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../future/ideas.html#project-structure-cleanup">Project Structure Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../future/ideas.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../future/ideas.html#more-heatingisms">More Heatingisms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Source Code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../github.html">Getting the Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../components/main.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/main.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/main.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../components/thermometers.html#executable">Executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/thermometers.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/thermometers.html#objects-provided">Objects Provided</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/switches.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Switches</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../components/switches.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/switches.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/switches.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/circuits.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Circuits</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../components/circuits.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/circuits.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../components/circuits.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/oil.html">Oil Burner Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/wood.html">Wood Oven Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/room.html">Room Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../components/boiler.html">Warm Water</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">openheating</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Faschingbauer Installation Specifics</a> &raquo;</li>
+        
+      <li>RJ11 Plugs, Pins</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/doc/faschingbauer/w1/w1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rj11-plugs-pins">
+<h1>RJ11 Plugs, Pins<a class="headerlink" href="#rj11-plugs-pins" title="Permalink to this headline">¶</a></h1>
+<p>Look at plug from front, pins on top. Pins from left to right …</p>
+<ul class="simple">
+<li><p>red, 3v3</p></li>
+<li><p>black, GND</p></li>
+<li><p>yellow, DATA</p></li>
+<li><p>white, GND</p></li>
+</ul>
+<div class="section" id="parasitic-vs-powered">
+<h2>Parasitic vs. Powered<a class="headerlink" href="#parasitic-vs-powered" title="Permalink to this headline">¶</a></h2>
+<p>I had problems repeatedly on one line; devices disappeared and were
+replaced by ones that were named 00-0c4000000000.</p>
+<p>00 is the family (for example, 28 (decimal) would be the expected
+Maxim DS28E04-100) which is completely bogus. 0c4000000000 is the
+serial number, which his also too even to be correct.</p>
+<p>It looks like the sensors become unstable under certain
+circumstances. I can imagine that permanent power (as opposed to
+parasitic power) make the instability, if it happens, permanent as
+well. At least, unplugging the power supply cured the symptom
+<em>immediately</em>.</p>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/148">https://www.maximintegrated.com/en/app-notes/index.mvp/id/148</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="w1-gpio">
+<h1>w1-gpio<a class="headerlink" href="#w1-gpio" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/148">https://www.maximintegrated.com/en/app-notes/index.mvp/id/148</a> defines
+radius and weight, to give a definition as to how onewire networks
+should be laid out. My network initially consisted of only one line,
+exhibiting a heavy star topology. By branching off too early (ca. 1m
+away the master) into another three long lines, I introduced severe
+instabilities. Better to dedicate separate lines to faraway sensors
+families (like oil-heater, warm-water-store, and room).</p>
+<div class="section" id="raspberry-devicetree-overlay-situation">
+<h2>Raspberry Devicetree Overlay Situation<a class="headerlink" href="#raspberry-devicetree-overlay-situation" title="Permalink to this headline">¶</a></h2>
+<p>Read on before doing this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># rpi-update</span>
+</pre></div>
+</div>
+<p>I do not know if this is necessary; I unfortunately did it before
+trying if the lines below worked out of the box. Apparently this
+installs a not-yet-upstream set of overlay, of which the w1-gpio
+overlay know how to create multiple w1 lines.</p>
+<p>Could well be that the following Raspbian version (the one that is
+current as of this writing) supports it out of the box …</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat /etc/debian_version
+9.9
+$ uname -a
+Linux heizung 4.19.57-v7+ #1244 SMP Thu Jul 4 18:45:25 BST 2019 armv7l GNU/Linux
+</pre></div>
+</div>
+<p>Anyway. In <cite>/boot/config.txt</cite>, you write</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dtoverlay</span><span class="o">=</span><span class="n">w1</span><span class="o">-</span><span class="n">gpio</span><span class="p">,</span><span class="n">gpiopin</span><span class="o">=</span><span class="mi">24</span>
+<span class="n">dtoverlay</span><span class="o">=</span><span class="n">w1</span><span class="o">-</span><span class="n">gpio</span><span class="p">,</span><span class="n">gpiopin</span><span class="o">=</span><span class="mi">25</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="issues">
+<h1>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h1>
+<p>Some sensors read 0 degrees, starting at some point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cat /sys/bus/w1/devices/28-011432f138f9/w1_slave</span>
+<span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="p">:</span> <span class="n">crc</span><span class="o">=</span><span class="mi">00</span> <span class="n">YES</span>
+<span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Links</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.raspberrypi.org/forums/viewtopic.php?t=164059">https://www.raspberrypi.org/forums/viewtopic.php?t=164059</a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../electrics.html" class="btn btn-neutral float-right" title="Unsorted Electrical Things" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../gpio/gpio.html" class="btn btn-neutral float-left" title="GPIO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jörg Faschingbauer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

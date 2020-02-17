@@ -1,0 +1,77 @@
+Using Github Pages
+==================
+
+.. contents::
+
+Create "Site Publication Repo"
+------------------------------
+
+No, we do *not* pollute our source repo :file:`jfasch/openheating`
+with binary content, as Github suggests. This reminds me of a company
+I worked for many years ago:
+
+* They had a huge pile of incomprehensible C/C++ code.
+* They built all that in the source tree (no, not with CMake or meson
+  or something else that can do out-of-source builds, but with another
+  huge pile of Doze ``cmd`` code.).
+* They committed the build output. **Yes**: every build they made was
+  a record in their version control system. The same repo that
+  contained the source.
+* **Effect**: developers did not develop most of their time, but wait
+  for VC operations. Rational Clearcase can be blamed for many issues,
+  but not for that I'd say.
+* The company does not exist anymore.
+
+*So*, in parallel to the :file:`jfasch/openheating` repository, I
+create the :file:`jfasch/openheating-pages` repository. The intent is
+to use the :file:`openheating-pages/docs/` subdirectory as a
+*deployment location* for the Sphinx-generated output from
+:file:`openheating` - one commit/push per deployment.
+
+Test that, by populating :file:`jfasch/openheating-pages` with dummy
+HTML content. Ah, Jekyll: we provide static files which are not source
+code, technically, so we do not want Github to build our site with
+Jekyll. This is what the :file:`.nojekyll` file tells them to -
+suppress build.
+
+.. code-block:: shell
+
+   $ mkdir docs/
+   $ cat <<EOF > docs/index.html
+   <!DOCTYPE html>
+   <head>
+     <title>Dummy</title>
+   </head>
+   
+   <body>
+     <p>Hmm. Appears to work.</p>
+   </body>
+   </html>
+   EOF
+   $ touch docs/.nojekyll
+   $ git add docs/index.html docs/.nojekyll
+   $ git commit -am test
+   $ git push
+
+Maybe check on the Github page that the upstream content matches what
+we just created.
+
+Configure Github Pages for :file:`jfasch/openheating-pages`
+-----------------------------------------------------------
+
+Make sure you are logged in (I made that mistake and did not find the
+"Settings" tab :-) ). Go to the "Settings tab.
+
+We intend to serve content from :file:`docs/`, so select "master
+branch / docs folder". Scroll to the "Github Pages" section, and
+select that constellation.
+
+.. image:: master-docs.png
+
+.. note::
+
+   * You will not see the "Your site is published at ..." message
+     immediately; the Github deployment machinery takes a while.
+   * If the message appears, eventually, an innocent click on the link
+     may lead to a 404 error. Edit the URL in the bar to explicitly
+     add :file:`.../index.html`, or wait another few minutes.
