@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
 import sys
-# add openheating libdir so we can import (see setup.py how
-# placeholders are substituted)
+
+# add openheating libdir so we can import. the directory that we
+# prepend to sys.path is a placeholder that is substituted at
+# installation time. see setup.py, "ac_subst", for how this is done.
 sys.path.insert(0, '${libdir}')
 
 from openheating.plant import locations
@@ -31,10 +33,20 @@ configfile = locations.confdir + '/plant.pyconf'
 if args.config is not None:
     configfile = args.config
 
+# this is where we create things under
+normal_dir = vars(args)['normal-dir']
+
 the_plant = plant.create_plant_with_main(configfile)
 
 for s in the_plant.servicedefs:
-    filename, busname, content = service_unit.create(
-        s, sourcepath=configfile, generator_exe=sys.argv[0])
-    with open(os.path.join(vars(args)['normal-dir'], filename), 'w') as f:
-        f.write(content)
+    # write unit file content into normal-dir/unitname
+    unitfile = os.path.join(normal_dir, s.unitname)
+    with open(unitfile, 'w') as f:
+        f.write(service_unit.create(s, sourcepath=configfile, generator_exe=sys.argv[0]))
+    # add "WantedBy" logic. this has the same effect as `systemctl
+    # enable <s.unitname>`.
+    for wby in s.wantedby:
+        wants_dir = os.path.join(normal_dir, wby+'.wants')
+        os.makedirs(wants_dir, exist_ok=True)
+        os.symlink(unitfile, os.path.join(wants_dir, s.unitname))
+        

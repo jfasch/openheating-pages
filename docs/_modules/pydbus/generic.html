@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pydbus.generic &mdash; openheating 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> openheating
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/install/dependencies.html">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/dependencies.html#dbus-pydbus">DBus: pydbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/dependencies.html#systemd-startup-notification"><cite>systemd</cite> Startup Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/dependencies.html#flask">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/dependencies.html#gradients-interpolation-graphs">Gradients, Interpolation, Graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/dependencies.html#gpio-libgpiod">GPIO: <cite>libgpiod</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/install/dependencies.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/install/dependencies.html#links">Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/install/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#get-the-source">Get the Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#bootloader">Bootloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#create-user">Create User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#http-service">HTTP Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#dbus-configuration">DBus Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/install/installation.html#finally-startup">Finally: Startup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/motivation.html">Motivation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/motivation.html#current-goal-keep-my-house-warm">Current Goal: Keep my House Warm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/motivation.html#rant">Rant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/motivation.html#plan">Plan</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/faschingbauer/index.html">Faschingbauer Installation Specifics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/faschingbauer/gpio/gpio.html">GPIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/faschingbauer/gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/faschingbauer/w1/w1.html#links">Links</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/faschingbauer/w1/w1.html#issues">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/marketing/index.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/marketing/glt2020/blink.html#cv">CV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/marketing/glt2020/blink.html#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/marketing/glt2020/blink.html#topics">Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/marketing/glt2020/blink.html#use-case">Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/marketing/heating.html">OpenHeating Presentation Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/misc/index.html">Miscellaneous Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/misc/dbus.html">D-Bus Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/dbus.html#calling-object-methods">Calling Object Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/misc/dbus.html#thermometer-service">Thermometer Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/dbus.html#introspection">Introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/dbus.html#debug-monitor">Debug, Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/misc/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/panel.html#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/panel.html#autostart">Autostart</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/misc/gh-pages/index.html">Github Pages as Hosting Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/gh-pages/sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/misc/gh-pages/sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/misc/gh-pages/sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/misc/gh-pages/sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/misc/gh-pages/custom-domain-gh-pages.html">Adding a Custom Domain to a Github Pages Project Site</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/misc/gh-pages/custom-domain-gh-pages.html#configure-a-subdomain-www-openheating-org">Configure a Subdomain, <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../doc/misc/gh-pages/custom-domain-gh-pages.html#configure-an-apex-domain-openheating-org">Configure an Apex Domain, <code class="docutils literal notranslate"><span class="pre">openheating.org</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/future/index.html">What the Future Maybe Brings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/future/stack.html">Stacks (Hanging)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/future/stack.html#hotwater-circuit-overtake">Hotwater Circuit Overtake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/future/stack.html#component-documentation">Component Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/future/ideas.html">Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/future/ideas.html#panel">Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/future/ideas.html#project-structure-cleanup">Project Structure Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/future/ideas.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/future/ideas.html#more-heatingisms">More Heatingisms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/github.html">Getting the Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/main.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/main.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/thermometers.html">Thermometers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/switches.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Switches</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/switches.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/switches.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/switches.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/circuits.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Circuits</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/circuits.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/circuits.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../doc/components/circuits.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/oil.html">Oil Burner Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/wood.html">Wood Oven Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/room.html">Room Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../doc/components/dbus-objects.html">D-Bus Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/simulation/index.html">Running Plant Under Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc/unittests/index.html">Running Unittests</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">openheating</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>pydbus.generic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pydbus.generic</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Generic programming utilities.</span>
+
+<span class="sd">Utilities implemented in this file are not dependent</span>
+<span class="sd">on dbus, they can be used everywhere.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">subscription</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;callback_list&quot;</span><span class="p">,</span> <span class="s2">&quot;callback&quot;</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_list</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback_list</span> <span class="o">=</span> <span class="n">callback_list</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">unsubscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback_list</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="kc">None</span>
+
+	<span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;An alias for unsubscribe()&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">unsubscribe</span><span class="p">()</span>
+
+	<span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span>
+
+	<span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">unsubscribe</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">bound_signal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;__signal__&quot;</span><span class="p">,</span> <span class="s2">&quot;__self__&quot;</span><span class="p">)</span> <span class="c1"># bound method uses (&quot;__func__&quot;, &quot;__self__&quot;)</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">__signal__</span> <span class="o">=</span> <span class="n">signal</span>
+		<span class="bp">self</span><span class="o">.</span><span class="vm">__self__</span> <span class="o">=</span> <span class="n">instance</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__signal__</span><span class="o">.</span><span class="n">map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="vm">__self__</span><span class="p">]</span>
+
+	<span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Subscribe to the signal.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__signal__</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__self__</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Emit the signal.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">__signal__</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__self__</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Emit the signal.&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="s2">&quot;&lt;bound signal &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__signal__</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="o">+</span> <span class="s2">&quot; of &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__self__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&gt;&quot;</span>
+
+<span class="k">class</span> <span class="nc">signal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Static signal object</span>
+
+<span class="sd">	You&#39;re expected to set it as a class property::</span>
+
+<span class="sd">		class A:</span>
+<span class="sd">			SomethingHappened = signal()</span>
+
+<span class="sd">	Declared this way, it can be used on class instances</span>
+<span class="sd">	to connect signal observers::</span>
+
+<span class="sd">		a = A()</span>
+<span class="sd">		a.SomethingHappened.connect(func)</span>
+
+<span class="sd">	and emit the signal::</span>
+
+<span class="sd">		a.SomethingHappened()</span>
+
+<span class="sd">	You may pass any parameters to the emiting function</span>
+<span class="sd">	- they will be forwarded to all subscribed callbacks.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="o">=</span> <span class="s2">&quot;&lt;anonymous signal&gt;&quot;</span> <span class="c1"># function uses &lt;lambda&gt; ;)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">&quot;Signal.&quot;</span>
+
+	<span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Subscribe to the signal.&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">subscription</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">[]),</span> <span class="n">callback</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Emit the signal.&quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">[]):</span>
+			<span class="n">cb</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span>
+
+		<span class="k">return</span> <span class="n">bound_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+		<span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;can&#39;t set attribute&quot;</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="s2">&quot;&lt;signal &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="o">+</span> <span class="s2">&quot; at 0x&quot;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&gt;&quot;</span>
+
+<span class="n">bound_method</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">signal</span><span class="p">()</span><span class="o">.</span><span class="n">emit</span><span class="p">)</span> <span class="c1"># TODO find a prettier way to get this type</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jörg Faschingbauer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

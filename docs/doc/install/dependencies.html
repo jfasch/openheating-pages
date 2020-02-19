@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -166,12 +166,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#autostart">Autostart</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#time-for-deployment">Time for Deployment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/index.html#step-1-build-openheating-site-with-sphinx">Step 1: Build openheating site (with Sphinx)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/index.html#step-2-copy-build-over-to-deployment-repo">Step 2: Copy Build Over to Deployment Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Github Pages as Hosting Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html">Adding a Custom Domain to a Github Pages Project Site</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-a-subdomain-www-openheating-org">Configure a Subdomain, <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-an-apex-domain-openheating-org">Configure an Apex Domain, <code class="docutils literal notranslate"><span class="pre">openheating.org</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -198,15 +202,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -227,6 +233,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Running Plant Under Simulation</a></li>
@@ -350,45 +357,88 @@ independently from libgpiod.)</p>
 will bring the Python binding in future versions). <code class="docutils literal notranslate"><span class="pre">libgpiod</span></code>
 requires the <a class="reference external" href="https://www.gnu.org/software/autoconf-archive/">autoconf archive</a> which definitely
 needs some love.</p>
-<p>Check build dependencies:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apt install autoconf</span>
-<span class="c1"># apt install libtool</span>
+<ul>
+<li><p><em>Install build dependencies</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ apt install autoconf
+<span class="o">(</span>root<span class="o">)</span>$ apt install libtool
 </pre></div>
 </div>
-<p>Build and install:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/hrmpf
-$ cd ~/hrmpf
-$ git clone git://git.sv.gnu.org/autoconf-archive.git
-$ git clone git://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
-$ cp -r ~/hrmpf/autoconf-archive/m4 ~/hrmpf/libgpiod/m4  # see rant below
-$ cd libgpiod
-$ autoreconf --force --install --verbose
-$ ./configure --prefix=/usr/local --enable-bindings-python
-$ make
-$ sudo make install
-</pre></div>
-</div>
-<p><em>Rant</em>: I haven’t found a way to set <code class="docutils literal notranslate"><span class="pre">aclocal</span></code>’s M4 path into
+</li>
+<li><p><em>Prepare for Build</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Rant!</em></p>
+<p>I haven’t found a way to set <code class="docutils literal notranslate"><span class="pre">aclocal</span></code>’s M4 path into
 <code class="docutils literal notranslate"><span class="pre">autoconf-archive/m4</span></code>, so I simply copy it to <code class="docutils literal notranslate"><span class="pre">libgpiod/m4/</span></code>.</p>
-<p>Set paths (take the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> value from the messages of the
-<code class="docutils literal notranslate"><span class="pre">libgpiod</span></code> build, as it depends on the Python version you are using):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
-$ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>jfasch<span class="o">)</span>$ mkdir ~/hrmpf
+<span class="o">(</span>jfasch<span class="o">)</span>$ <span class="nb">cd</span> ~/hrmpf
+<span class="o">(</span>jfasch<span class="o">)</span>$ git clone git://git.sv.gnu.org/autoconf-archive.git
+<span class="o">(</span>jfasch<span class="o">)</span>$ git clone git://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git
+<span class="o">(</span>jfasch<span class="o">)</span>$ cp -r ~/hrmpf/autoconf-archive/m4 ~/hrmpf/libgpiod/m4
 </pre></div>
 </div>
-<p>Better yet, create <code class="docutils literal notranslate"><span class="pre">/etc/profile.d/openheating.sh</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+</li>
+<li><p><em>Build and Install</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>Rant!</em></p>
+<p>We install into <code class="docutils literal notranslate"><span class="pre">/usr</span></code>. <em>Reason</em>: OpenHeating services are
+started by systemd, and there is no easy way to point its
+<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> to somewhere else.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>jfasch<span class="o">)</span>$ <span class="nb">cd</span> libgpiod
+<span class="o">(</span>jfasch<span class="o">)</span>$ autoreconf --force --install --verbose
+<span class="o">(</span>jfasch<span class="o">)</span>$ ./configure --prefix<span class="o">=</span>/usr --enable-bindings-python
+<span class="o">(</span>jfasch<span class="o">)</span>$ make
+<span class="o">(</span>root<span class="o">)</span>$ make install
 </pre></div>
 </div>
-<p>See if all is well,:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3
-Python 3.5.3 (default, Sep 27 2018, 17:25:39)
-[GCC 6.3.0 20170516] on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</li>
+<li><p><em>Fix bullshit</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<span class="go">&#39;3.5.3 (default, Sep 27 2018, 17:25:39) \n[GCC 6.3.0 20170516]&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gpiod</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ImportError</span>: <span class="n">No module named &#39;gpiod&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>WTF!</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">libgpiod</span></code>’s Python binding is built and installed by
+Automake. Although I know Automake well enough to stay away as
+much as I can (I haven’t been able to <em>explain</em> it to anybody,
+and I’m convinced that’s not my fault), its Python support
+appears to be well, and libgpiod uses it correctly as far as I
+can see. It detects the Python version, and installs into
+<code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/site-packages</span></code>. Reading <a class="reference external" href="https://docs.python.org/3.5/library/site.html">the documentation
+for Python’s site module</a>, Python should
+be able to pick it up from there.</p>
+<p><strong>WTF! It that an artifact of Debian/Raspbian?</strong></p>
+</div>
+<p>Anyway … knowing that we cannot simply fix that by adding
+<code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/site-packages</span></code> to the environment (via
+<code class="docutils literal notranslate"><span class="pre">/etc/profile.d/</span></code> for example) because systemd does not pull that
+in, we add it to <code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/sitecustomize.py</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ cat <span class="s">&lt;&lt;EOF &gt;&gt; /usr/lib/python3.5/sitecustomize.py</span>
+<span class="s">import site</span>
+<span class="s">site.addsitedir(&#39;/usr/lib/python3.5/site-packages&#39;)</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p>See if all is well,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ python3
+Python <span class="m">3</span>.5.3 <span class="o">(</span>default, Sep <span class="m">27</span> <span class="m">2018</span>, <span class="m">17</span>:25:39<span class="o">)</span>
+<span class="o">[</span>GCC <span class="m">6</span>.3.0 <span class="m">20170516</span><span class="o">]</span> on linux
+Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
 &gt;&gt;&gt; import gpiod
 </pre></div>
 </div>
+</li>
+</ul>
 </div>
 <div class="section" id="links">
 <h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>

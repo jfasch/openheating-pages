@@ -98,8 +98,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -200,15 +200,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -229,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/simulation/index.html">Running Plant Under Simulation</a></li>
@@ -310,7 +313,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__iface</span> <span class="o">=</span> <span class="n">_util</span><span class="o">.</span><span class="n">get_iface</span><span class="p">(</span>
             <span class="n">bus</span><span class="o">=</span><span class="n">bus</span><span class="p">,</span>
             <span class="n">busname</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">THERMOMETERS</span><span class="p">,</span>
-            <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">ThermometerPaths</span><span class="o">.</span><span class="n">CENTER</span><span class="p">,</span>
             <span class="n">iface</span><span class="o">=</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">THERMOMETERCENTER</span><span class="p">)</span>
 
     <span class="nd">@error</span><span class="o">.</span><span class="n">maperror</span>
@@ -322,7 +325,7 @@
         <span class="k">return</span> <span class="n">Thermometer_Client</span><span class="p">(</span><span class="n">proxy</span><span class="o">=</span><span class="n">_util</span><span class="o">.</span><span class="n">get_iface</span><span class="p">(</span>
             <span class="n">bus</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__bus</span><span class="p">,</span>
             <span class="n">busname</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">THERMOMETERS</span><span class="p">,</span>
-            <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/thermometers/&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">,</span> 
+            <span class="n">path</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">ThermometerPaths</span><span class="o">.</span><span class="n">THERMOMETER</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
             <span class="n">iface</span><span class="o">=</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">THERMOMETER</span><span class="p">))</span>
 
     <span class="nd">@error</span><span class="o">.</span><span class="n">maperror</span>
@@ -330,7 +333,7 @@
         <span class="k">return</span> <span class="n">TemperatureHistory_Client</span><span class="p">(</span><span class="n">proxy</span><span class="o">=</span><span class="n">_util</span><span class="o">.</span><span class="n">get_iface</span><span class="p">(</span>
             <span class="n">bus</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__bus</span><span class="p">,</span>
             <span class="n">busname</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">Bus</span><span class="o">.</span><span class="n">THERMOMETERS</span><span class="p">,</span>
-            <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/thermometers/&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">,</span> 
+            <span class="n">path</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">ThermometerPaths</span><span class="o">.</span><span class="n">THERMOMETER</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
             <span class="n">iface</span><span class="o">=</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">TEMPERATUREHISTORY</span><span class="p">))</span>
 
     <span class="nd">@error</span><span class="o">.</span><span class="n">maperror</span>
@@ -339,19 +342,29 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">get_thermometer</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">force_update</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ThermometerCenter_Server"><a class="viewcode-back" href="../../../doc/components/thermometers.html#openheating.dbus.thermometer_center.ThermometerCenter_Server">[docs]</a><span class="nd">@node</span><span class="o">.</span><span class="n">Definition</span><span class="p">(</span><span class="n">interfaces</span><span class="o">=</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<div class="viewcode-block" id="ThermometerCenter_Server"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server">[docs]</a><span class="nd">@node</span><span class="o">.</span><span class="n">Definition</span><span class="p">(</span><span class="n">interfaces</span><span class="o">=</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
     <span class="n">interface_repo</span><span class="o">.</span><span class="n">THERMOMETERCENTER</span><span class="p">,</span>
     <span class="n">interface_repo</span><span class="o">.</span><span class="n">POLLABLE</span><span class="p">))</span>
 <span class="k">class</span> <span class="nc">ThermometerCenter_Server</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;D-Bus object that ... well, sort of ... maintains thermometer</span>
+<span class="sd">    objects.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objects</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__objects</span> <span class="o">=</span> <span class="n">objects</span>
 
-    <span class="k">def</span> <span class="nf">all_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__objects</span><span class="p">]</span>
+<div class="viewcode-block" id="ThermometerCenter_Server.all_names"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server.all_names">[docs]</a>    <span class="k">def</span> <span class="nf">all_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;:returns: list strings; names of maintained thermometers.</span>
 
-    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__objects</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="ThermometerCenter_Server.poll"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server.poll">[docs]</a>    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Polls all maintained thermometers.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__objects</span><span class="p">:</span>
-            <span class="n">o</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span></div>
+            <span class="n">o</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

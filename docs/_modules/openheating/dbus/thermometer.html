@@ -98,8 +98,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -200,15 +200,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -229,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/simulation/index.html">Running Plant Under Simulation</a></li>
@@ -356,11 +359,26 @@
             <span class="n">timeutil</span><span class="o">.</span><span class="n">delta2unix</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
 
 
-<div class="viewcode-block" id="Thermometer_Server"><a class="viewcode-back" href="../../../doc/components/thermometers.html#openheating.dbus.thermometer.Thermometer_Server">[docs]</a><span class="nd">@lifecycle</span><span class="o">.</span><span class="n">managed</span><span class="p">(</span><span class="n">startup</span><span class="o">=</span><span class="s1">&#39;_startup&#39;</span><span class="p">,</span> <span class="n">shutdown</span><span class="o">=</span><span class="s1">&#39;_shutdown&#39;</span><span class="p">,</span> <span class="n">onbus</span><span class="o">=</span><span class="s1">&#39;_onbus&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="Thermometer_Server"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server">[docs]</a><span class="nd">@lifecycle</span><span class="o">.</span><span class="n">managed</span><span class="p">(</span><span class="n">startup</span><span class="o">=</span><span class="s1">&#39;_startup&#39;</span><span class="p">,</span> <span class="n">shutdown</span><span class="o">=</span><span class="s1">&#39;_shutdown&#39;</span><span class="p">,</span> <span class="n">onbus</span><span class="o">=</span><span class="s1">&#39;_onbus&#39;</span><span class="p">)</span>
 <span class="nd">@node</span><span class="o">.</span><span class="n">Definition</span><span class="p">(</span><span class="n">interfaces</span><span class="o">=</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">interface_repo</span><span class="o">.</span><span class="n">THERMOMETER</span><span class="p">,</span> 
                                                <span class="n">interface_repo</span><span class="o">.</span><span class="n">TEMPERATUREHISTORY</span><span class="p">,</span>
                                                <span class="n">interface_repo</span><span class="o">.</span><span class="n">POLLABLE</span><span class="p">))</span>
 <span class="k">class</span> <span class="nc">Thermometer_Server</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;D-Bus object representing various aspects of a thermometer.</span>
+
+<span class="sd">    * **Thermometer**: Current temperature, thermometer name and</span>
+<span class="sd">      description.</span>
+
+<span class="sd">    * **Temperature history**: keeps temperature values from the past,</span>
+<span class="sd">      accessible for, for example, histogram generation, or gradient</span>
+<span class="sd">      calculation.</span>
+
+<span class="sd">    * **Polling**: a poll initiates a temperature read in the</span>
+<span class="sd">      background; the call returns immediately. Reason: Onewire</span>
+<span class="sd">      temperature reads take over a second, and the poller sure has</span>
+<span class="sd">      other things to do in the meantime.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">thermometer</span><span class="p">,</span> <span class="n">history</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">thermometer</span><span class="p">,</span> <span class="n">Thermometer</span><span class="p">)</span>
 
@@ -377,25 +395,42 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+<div class="viewcode-block" id="Thermometer_Server.get_name"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Thermometer name&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span></div>
 
-    <span class="k">def</span> <span class="nf">get_description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__description</span>
+<div class="viewcode-block" id="Thermometer_Server.get_description"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.get_description">[docs]</a>    <span class="k">def</span> <span class="nf">get_description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Thermometer description&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__description</span></div>
 
-    <span class="k">def</span> <span class="nf">get_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Thermometer_Server.get_temperature"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.get_temperature">[docs]</a>    <span class="k">def</span> <span class="nf">get_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Current temperature&#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_error</span><span class="p">:</span>
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_error</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_temperature</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_temperature</span></div>
 
     <span class="k">def</span> <span class="nf">force_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__make_current</span><span class="p">(</span><span class="n">timestamp</span><span class="o">=</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__thermometer</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">())</span>
 
-    <span class="k">def</span> <span class="nf">distill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">granularity</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__history</span><span class="o">.</span><span class="n">distill</span><span class="p">(</span><span class="n">granularity</span><span class="o">=</span><span class="n">granularity</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">))</span>
+<div class="viewcode-block" id="Thermometer_Server.distill"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.distill">[docs]</a>    <span class="k">def</span> <span class="nf">distill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">granularity</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Extract values from temperature history</span>
 
-    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__background_thread</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__update</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+<span class="sd">        :param granularity: minimum gap between two samples (in</span>
+<span class="sd">                seconds or datetime.timedelta)</span>
+
+<span class="sd">        :param duration: time span from now in the past (in seconds or</span>
+<span class="sd">                         datetime.timedelta)</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__history</span><span class="o">.</span><span class="n">distill</span><span class="p">(</span><span class="n">granularity</span><span class="o">=</span><span class="n">granularity</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Thermometer_Server.poll"><a class="viewcode-back" href="../../../doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.poll">[docs]</a>    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Initiate a background temperature reading and return</span>
+<span class="sd">        immediately. When reading completes, the temperature is added</span>
+<span class="sd">        to the history with timestamp.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__background_thread</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__update</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
         <span class="c1"># in the background thread now, take as long as we want (about</span>
@@ -430,7 +465,7 @@
     <span class="k">def</span> <span class="nf">_startup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;starting&#39;</span><span class="p">)</span>
 
-        <span class="c1"># iniial temperature read, just to have something in case</span>
+        <span class="c1"># initial temperature read, just to have something in case</span>
         <span class="c1"># someone asks. this carries timestamp 0/epoch; cannot simply</span>
         <span class="c1"># take wall clock time here - unittests fake the time, and</span>
         <span class="c1"># replays bring their own (past) timestamps.</span>

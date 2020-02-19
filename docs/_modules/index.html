@@ -98,8 +98,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -200,15 +200,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../doc/github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../doc/components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../doc/components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../doc/components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../doc/components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../doc/components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../doc/components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -229,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../doc/components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../doc/components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../doc/components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../doc/components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../doc/simulation/index.html">Running Plant Under Simulation</a></li>
@@ -296,6 +299,7 @@
   <h1>All modules for which code is available</h1>
 <ul><li><a href="openheating/dbus/thermometer.html">openheating.dbus.thermometer</a></li>
 <li><a href="openheating/dbus/thermometer_center.html">openheating.dbus.thermometer_center</a></li>
+<li><a href="pydbus/generic.html">pydbus.generic</a></li>
 </ul>
 
            </div>

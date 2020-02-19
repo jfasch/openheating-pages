@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -166,12 +166,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#autostart">Autostart</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#time-for-deployment">Time for Deployment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/index.html#step-1-build-openheating-site-with-sphinx">Step 1: Build openheating site (with Sphinx)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/index.html#step-2-copy-build-over-to-deployment-repo">Step 2: Copy Build Over to Deployment Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Github Pages as Hosting Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html">Adding a Custom Domain to a Github Pages Project Site</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-a-subdomain-www-openheating-org">Configure a Subdomain, <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-an-apex-domain-openheating-org">Configure an Apex Domain, <code class="docutils literal notranslate"><span class="pre">openheating.org</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -198,15 +202,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -227,6 +233,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Running Plant Under Simulation</a></li>
@@ -307,10 +314,17 @@ for myself.</p>
 </div>
 <div class="section" id="get-the-source">
 <h2>Get the Source<a class="headerlink" href="#get-the-source" title="Permalink to this headline">¶</a></h2>
-<p>Clone project, and install it to <cite>/some/prefix</cite>,</p>
+<p>Clone project,</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>jfasch<span class="o">)</span>$ git clone https://github.com/jfasch/openheating.git
-<span class="o">(</span>jfasch<span class="o">)</span>$ <span class="nb">cd</span> openheating
-<span class="o">(</span>jfasch<span class="o">)</span>$ python3 setup.py install --prefix<span class="o">=</span>/some/prefix
+</pre></div>
+</div>
+<p>Install it to <code class="docutils literal notranslate"><span class="pre">/some/prefix</span></code>. We will refer to this directory in the
+remainder of the instructions; consider it a placeholder for some
+real-life installation directory like <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> (which is the
+default if <code class="docutils literal notranslate"><span class="pre">--prefix</span></code> is omitted).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ <span class="nb">cd</span> openheating
+<span class="o">(</span>root<span class="o">)</span>$ rm -r build   <span class="c1"># ac_subst is not re-run (bug!)</span>
+<span class="o">(</span>root<span class="o">)</span>$ python3 setup.py install --prefix<span class="o">=</span>/some/prefix
 </pre></div>
 </div>
 </div>
@@ -326,8 +340,8 @@ config over from source,</p>
 </div>
 <div class="section" id="create-user">
 <h2>Create User<a class="headerlink" href="#create-user" title="Permalink to this headline">¶</a></h2>
-<p>Create <cite>openheating</cite> user,</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ useradd --system openheating
+<p>Create <cite>openheating</cite> user (and give it permission to use GPIOs),</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ useradd --system --groups gpio openheating
 </pre></div>
 </div>
 </div>
@@ -347,29 +361,36 @@ config over from source,</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="file docutils literal notranslate"><span class="pre">plant.pyconf</span></code> is the main config file. It defines which
-components are run, and what their config files are - so the above
-list is basically an outcome of <code class="file docutils literal notranslate"><span class="pre">plant.pyconf</span></code>’s content.</p>
+<p><code class="docutils literal notranslate"><span class="pre">plant.pyconf</span></code> is the main config file. It defines which
+components are run, and what their config files are. So, the above
+list it a direct consequence of what’s in <code class="docutils literal notranslate"><span class="pre">plant.pyconf</span></code>.</p>
 </div>
 </div>
-<div class="section" id="systemd-unit-generator">
-<h2><cite>systemd</cite> Unit Generator<a class="headerlink" href="#systemd-unit-generator" title="Permalink to this headline">¶</a></h2>
-<p>The components of a heating system are likely to vary from
-installation to installation (despite the fact that there is only one
-such installation). <cite>systemd</cite> unit files are <em>generated</em> from the
-<code class="file docutils literal notranslate"><span class="pre">plant.pyconf</span></code> file that we copied earlier.</p>
-<p>Copy the unit file generator into a directory where it is picked up by
-<cite>systemd</cite>,</p>
+<div class="section" id="systemd-unit-generator-and-plant-startup">
+<h2><cite>systemd</cite> Unit Generator, and Plant Startup<a class="headerlink" href="#systemd-unit-generator-and-plant-startup" title="Permalink to this headline">¶</a></h2>
+<p>An OpenHeating plant consists of several independent (no, loosely
+coupled) D-Bus services that are started by systemd. As the choice of
+services may vary from plant to plant, the systemd service unit files
+are <em>generated</em> from the <code class="docutils literal notranslate"><span class="pre">plant.pyconf</span></code> that we copied earlier. (See
+<a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.generator.html">systemd.generator(7)</a>
+for more.)</p>
+<p>Copy the OpenHeating unit file generator into a directory where it is
+picked up by systemd,</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ mkdir -p /etc/systemd/system-generators
 <span class="o">(</span>root<span class="o">)</span>$ cp /some/prefix/bin/openheating-systemd-generator.py <span class="se">\</span>
              /etc/systemd/system-generators/
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.generator.html">systemd.generator(7)</a>
-for what unit file generators are.</p>
+<p>The generator will be invoked, and the generated units started, after
+reboot.</p>
+<p>If you want to check that all is well, reload the configuration,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ systemctl daemon-reload
+</pre></div>
 </div>
-<div class="section" id="systemd-units">
-<h2><cite>systemd</cite> Units<a class="headerlink" href="#systemd-units" title="Permalink to this headline">¶</a></h2>
+<p>and look what <code class="docutils literal notranslate"><span class="pre">/run/systemd/generator</span></code> contains.</p>
+</div>
+<div class="section" id="http-service">
+<h2>HTTP Service<a class="headerlink" href="#http-service" title="Permalink to this headline">¶</a></h2>
 <p>Web is not a “component” like the others; it is currently the only
 service that has a unit file to be deployed.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ cp /some/prefix/share/systemd/openheating-http.service <span class="se">\</span>

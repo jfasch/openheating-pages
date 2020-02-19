@@ -99,8 +99,8 @@
 <li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -201,15 +201,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="doc/github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc/components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="doc/components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="doc/components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -230,6 +232,7 @@
 <li class="toctree-l2"><a class="reference internal" href="doc/components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc/components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc/components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc/components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="doc/simulation/index.html">Running Plant Under Simulation</a></li>
@@ -300,17 +303,76 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#T"><strong>T</strong></a>
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#T"><strong>T</strong></a>
  
 </div>
-<h2 id="T">T</h2>
+<h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/components/thermometers.html#openheating.dbus.thermometer.Thermometer_Server">Thermometer_Server (class in openheating.dbus.thermometer)</a>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server.all_names">all_names() (openheating.dbus.thermometer_center.ThermometerCenter_Server method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.distill">distill() (openheating.dbus.thermometer.Thermometer_Server method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.error">error (openheating.dbus.thermometer.Thermometer_Server attribute)</a>
+
+      <ul>
+        <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server.error">(openheating.dbus.thermometer_center.ThermometerCenter_Server attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.get_description">get_description() (openheating.dbus.thermometer.Thermometer_Server method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="doc/components/thermometers.html#openheating.dbus.thermometer_center.ThermometerCenter_Server">ThermometerCenter_Server (class in openheating.dbus.thermometer_center)</a>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.get_name">get_name() (openheating.dbus.thermometer.Thermometer_Server method)</a>
+</li>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.get_temperature">get_temperature() (openheating.dbus.thermometer.Thermometer_Server method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server.poll">poll() (openheating.dbus.thermometer.Thermometer_Server method)</a>
+
+      <ul>
+        <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server.poll">(openheating.dbus.thermometer_center.ThermometerCenter_Server method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server">Thermometer_Server (class in openheating.dbus.thermometer)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="doc/components/dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server">ThermometerCenter_Server (class in openheating.dbus.thermometer_center)</a>
 </li>
   </ul></td>
 </tr></table>

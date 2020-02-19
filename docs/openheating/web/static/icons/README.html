@@ -164,12 +164,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../doc/misc/panel.html#autostart">Autostart</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html#time-for-deployment">Time for Deployment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html#step-1-build-openheating-site-with-sphinx">Step 1: Build openheating site (with Sphinx)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html#step-2-copy-build-over-to-deployment-repo">Step 2: Copy Build Over to Deployment Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/misc/gh-pages/index.html">Github Pages as Hosting Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/misc/gh-pages/sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/misc/gh-pages/custom-domain-gh-pages.html">Adding a Custom Domain to a Github Pages Project Site</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/custom-domain-gh-pages.html#configure-a-subdomain-www-openheating-org">Configure a Subdomain, <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../doc/misc/gh-pages/custom-domain-gh-pages.html#configure-an-apex-domain-openheating-org">Configure an Apex Domain, <code class="docutils literal notranslate"><span class="pre">openheating.org</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -196,15 +200,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../doc/github.html">Getting the Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../doc/components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/thermometers.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/thermometers.html#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/thermometers.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/thermometers.html">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/thermometers.html#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../doc/components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -225,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/components/dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../doc/simulation/index.html">Running Plant Under Simulation</a></li>

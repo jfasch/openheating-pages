@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>org.openheating.Thermometers &mdash; openheating 0.0.0 documentation</title>
+  <title>Thermometers &mdash; openheating 0.0.0 documentation</title>
   
 
   
@@ -166,12 +166,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#autostart">Autostart</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/index.html#time-for-deployment">Time for Deployment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/index.html#step-1-build-openheating-site-with-sphinx">Step 1: Build openheating site (with Sphinx)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/index.html#step-2-copy-build-over-to-deployment-repo">Step 2: Copy Build Over to Deployment Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Github Pages as Hosting Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html">Adding a Custom Domain to a Github Pages Project Site</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-a-subdomain-www-openheating-org">Configure a Subdomain, <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-an-apex-domain-openheating-org">Configure an Apex Domain, <code class="docutils literal notranslate"><span class="pre">openheating.org</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -198,15 +202,17 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../github.html">Getting the Source</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#polling">Polling</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="main.html#source">Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main.html#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="main.html#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#executable">Executable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Thermometers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#objects-provided">Objects Provided</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sample-configuration-file">Sample Configuration File</a></li>
 </ul>
@@ -227,6 +233,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wood.html">Wood Oven Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="room.html">Room Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dbus-objects.html">D-Bus Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Running Plant Under Simulation</a></li>
@@ -278,7 +285,7 @@
         
           <li><a href="index.html">Components</a> &raquo;</li>
         
-      <li><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></li>
+      <li>Thermometers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -297,54 +304,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="org-openheating-thermometers">
-<h1><a class="toc-backref" href="#id1"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a><a class="headerlink" href="#org-openheating-thermometers" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+  <div class="section" id="thermometers">
+<h1>Thermometers<a class="headerlink" href="#thermometers" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="sidebar-title">D-Bus</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#org-openheating-thermometers" id="id1"><code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></a></p>
-<ul>
-<li><p><a class="reference internal" href="#executable" id="id2">Executable</a></p></li>
-<li><p><a class="reference internal" href="#description" id="id3">Description</a></p></li>
-<li><p><a class="reference internal" href="#objects-provided" id="id4">Objects Provided</a></p></li>
-<li><p><a class="reference internal" href="#sample-configuration-file" id="id5">Sample Configuration File</a></p></li>
-</ul>
-</li>
+<li><p><em>Bus name</em>: <code class="docutils literal notranslate"><span class="pre">org.openheating.Thermometers</span></code></p></li>
+<li><p><em>Unit name</em>: <code class="docutils literal notranslate"><span class="pre">openheating-thermometers.service</span></code></p></li>
+<li><p><em>Executable</em>: <code class="docutils literal notranslate"><span class="pre">openheating-thermometers.py</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="executable">
-<h2><a class="toc-backref" href="#id2">Executable</a><a class="headerlink" href="#executable" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference download internal" download="" href="../../_downloads/2af571eb7f2cedcc7dd2e8c100b78e93/openheating-thermometers.py"><code class="xref download docutils literal notranslate"><span class="pre">/bin/openheating-thermometers.py</span></code></a></p>
-</div>
-<div class="section" id="description">
-<h2><a class="toc-backref" href="#id3">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>At the highest level, thermometers are exposed via D-Bus. The service
+is implemented in the executable
+<a class="reference download internal" download="" href="../../_downloads/2af571eb7f2cedcc7dd2e8c100b78e93/openheating-thermometers.py"><code class="xref download docutils literal notranslate"><span class="pre">/bin/openheating-thermometers.py</span></code></a>; responsibilities are
+roughly those:</p>
 <ul class="simple">
-<li><p>Based on a <a class="reference internal" href="#thermometers-config"><span class="std std-ref">configuration</span></a>, takes care
-about thermometers.</p></li>
+<li><p>Based on a configuration <a class="reference internal" href="#thermometers-config"><span class="std std-ref">(see below)</span></a>,
+takes care about thermometers.</p></li>
 <li><p>Exposes every thermometer as a D-Bus object.</p></li>
-<li><p>Polls from the <a class="reference internal" href="main.html"><span class="doc">org.openheating.Main</span></a> component initiate a temperature
-read.</p></li>
+<li><p><a class="reference internal" href="architecture.html#arch-polling"><span class="std std-ref">Polls</span></a> initiate a temperature read.</p></li>
 <li><p>Temperature reads are done in a background thread - a <a class="reference internal" href="../faschingbauer/w1/w1.html"><span class="doc">Onewire</span></a> temperature read takes over a second.</p></li>
 <li><p>Implements simulation mode where temperatures are read from files
 rather than real hardware. Really cool when you are on a train and
-the backpack is too small for an entire heating plant.</p></li>
+the backpack is large enough for your laptop, but too small for an
+entire heating plant.</p></li>
 </ul>
-</div>
 <div class="section" id="objects-provided">
-<h2><a class="toc-backref" href="#id4">Objects Provided</a><a class="headerlink" href="#objects-provided" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="openheating.dbus.thermometer.Thermometer_Server">
-<em class="property">class </em><code class="sig-prename descclassname">openheating.dbus.thermometer.</code><code class="sig-name descname">Thermometer_Server</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">description</em>, <em class="sig-param">thermometer</em>, <em class="sig-param">history</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/openheating/dbus/thermometer.html#Thermometer_Server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openheating.dbus.thermometer.Thermometer_Server" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="class">
-<dt id="openheating.dbus.thermometer_center.ThermometerCenter_Server">
-<em class="property">class </em><code class="sig-prename descclassname">openheating.dbus.thermometer_center.</code><code class="sig-name descname">ThermometerCenter_Server</code><span class="sig-paren">(</span><em class="sig-param">objects</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/openheating/dbus/thermometer_center.html#ThermometerCenter_Server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openheating.dbus.thermometer_center.ThermometerCenter_Server" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<h2>Objects Provided<a class="headerlink" href="#objects-provided" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Object Path</p></th>
+<th class="head"><p>Object (Python Class)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/</p></td>
+<td><p><a class="reference internal" href="dbus-objects.html#openheating.dbus.thermometer_center.ThermometerCenter_Server" title="openheating.dbus.thermometer_center.ThermometerCenter_Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">openheating.dbus.thermometer_center.ThermometerCenter_Server</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>/thermometers/&lt;name&gt;</p></td>
+<td><p><a class="reference internal" href="dbus-objects.html#openheating.dbus.thermometer.Thermometer_Server" title="openheating.dbus.thermometer.Thermometer_Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">openheating.dbus.thermometer.Thermometer_Server</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="sample-configuration-file">
-<span id="thermometers-config"></span><h2><a class="toc-backref" href="#id5">Sample Configuration File</a><a class="headerlink" href="#sample-configuration-file" title="Permalink to this headline">¶</a></h2>
+<span id="thermometers-config"></span><h2>Sample Configuration File<a class="headerlink" href="#sample-configuration-file" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
