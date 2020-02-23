@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -380,8 +380,8 @@ plant.</p></li>
 <span class="n">_switches</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s1">&#39;ww_nimm&#39;</span><span class="p">,</span>  <span class="s1">&#39;Nimm die Warmwasserpumpe!&#39;</span><span class="p">,</span>  <span class="mi">17</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;ww&#39;</span><span class="p">,</span>  <span class="s1">&#39;Schalt die Warmwasserpumpe!&#39;</span><span class="p">,</span>  <span class="mi">27</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;relay_2&#39;</span><span class="p">,</span>  <span class="s1">&#39;Relay 2&#39;</span><span class="p">,</span>  <span class="mi">22</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;relay_3&#39;</span><span class="p">,</span>  <span class="s1">&#39;Relay 3&#39;</span><span class="p">,</span>  <span class="mi">10</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;hk_nimm&#39;</span><span class="p">,</span>  <span class="s1">&#39;Nimm die Heizkreispumpe!&#39;</span><span class="p">,</span>  <span class="mi">22</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;hk&#39;</span><span class="p">,</span>  <span class="s1">&#39;Schalt die Heizkreispumpe!&#39;</span><span class="p">,</span>  <span class="mi">10</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;relay_4&#39;</span><span class="p">,</span>  <span class="s1">&#39;Relay 4&#39;</span><span class="p">,</span>   <span class="mi">9</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;relay_5&#39;</span><span class="p">,</span>  <span class="s1">&#39;Relay 5&#39;</span><span class="p">,</span>  <span class="mi">11</span><span class="p">),</span>
     <span class="p">(</span><span class="s1">&#39;relay_6&#39;</span><span class="p">,</span>  <span class="s1">&#39;Relay 6&#39;</span><span class="p">,</span>  <span class="mi">13</span><span class="p">),</span>

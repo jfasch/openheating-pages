@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -382,7 +382,14 @@ entire heating plant.</p></li>
 27
 28
 29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- python -*-</span>
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- python -*-</span>
 
 <span class="kn">from</span> <span class="nn">openheating.base.w1</span> <span class="kn">import</span> <span class="n">W1Thermometer</span>
 <span class="kn">from</span> <span class="nn">openheating.base.thermometer</span> <span class="kn">import</span> <span class="n">FileThermometer</span>
@@ -406,6 +413,13 @@ entire heating plant.</p></li>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">_thermometers</span><span class="p">:</span>
+    <span class="c1"># disable &#39;Oelbrenner&#39;. it appears to be disturbing the other;</span>
+    <span class="c1"># unplugged, everything fine now. giving</span>
+    <span class="c1"># https://www.maximintegrated.com/en/products/interface/controllers-expanders/DS2482-800.html</span>
+    <span class="c1"># a try, suspecting w1-gpio to be the cause.</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Oelbrenner&#39;</span><span class="p">:</span> 
+        <span class="k">continue</span>
+
     <span class="c1"># *in real life*: instantiates a W1Thermometer (which is a</span>
     <span class="c1"># callable) with one argument, path - like ``W1Thermometer(path)``</span>
 

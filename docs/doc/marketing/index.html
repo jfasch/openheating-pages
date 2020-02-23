@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -120,22 +120,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">Onewire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#issues">Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Marketing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="glt2020/index.html">Grazer Linuxtage 2020</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink.html">Talk Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="glt2020/blink.html#cv">CV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glt2020/blink.html#abstract">Abstract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glt2020/blink.html#topics">Topics</a></li>
@@ -143,6 +140,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="glt2020/blink/Screenplay.html#blocking">Blocking</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
 </ul>
 </li>
@@ -311,6 +309,24 @@ implementation (system level programming, architecture and
 overengineering and DBus, and most of all - Python), so there is
 definitely something to be had from it.</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glt2020/index.html">Grazer Linuxtage 2020</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glt2020/blink.html">Talk Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink.html#cv">CV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink.html#abstract">Abstract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink.html#topics">Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink.html#use-case">Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink/Screenplay.html#blocking">Blocking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="heating.html">OpenHeating Presentation Ideas</a></li>
+</ul>
 </div>
 </div>
 

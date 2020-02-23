@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -120,22 +120,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../faschingbauer/w1/w1.html">Onewire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../faschingbauer/w1/w1.html#issues">Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Marketing</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Grazer Linuxtage 2020</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../blink.html">CfP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../blink.html">Talk Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../blink.html#cv">CV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../blink.html#abstract">Abstract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../blink.html#topics">Topics</a></li>
@@ -143,7 +140,29 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">GLT2020 “Blink” Presentation Screenplay</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#led-without-led">LED without LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blocking">Blocking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asyncio-basics"><cite>asyncio</cite> Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#asyncio-basics-py"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#asyncio-parallel-py"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#towards-functional">Towards Functional</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sos-py"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#gpio">GPIO</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sos-loop-error-py"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#towards-functional-continued">Towards Functional, Continued</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#decorators-simple-example">Decorators: Simple Example</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#program-decorator-py"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#entire-library-of-such-programs">Entire Library of Such Programs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#easy-programming">Easy Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#push-button-events">Push-Button Events</a></li>
 </ul>
 </li>
 </ul>
@@ -307,23 +326,146 @@
            <div itemprop="articleBody">
             
   <div class="section" id="glt2020-blink-presentation-screenplay">
-<h1>GLT2020 “Blink” Presentation Screenplay<a class="headerlink" href="#glt2020-blink-presentation-screenplay" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="asyncio-basics">
-<h2><cite>asyncio</cite> Basics<a class="headerlink" href="#asyncio-basics" title="Permalink to this headline">¶</a></h2>
+<h1><a class="toc-backref" href="#id9">GLT2020 “Blink” Presentation Screenplay</a><a class="headerlink" href="#glt2020-blink-presentation-screenplay" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><p><cite>000-blink-blocking.py</cite></p></li>
-<li><p><cite>001-blink-multiple-mt.py</cite></p></li>
-<li><p><cite>010-asyncio-basics.py</cite></p>
+<li><p><a class="reference internal" href="#glt2020-blink-presentation-screenplay" id="id9">GLT2020 “Blink” Presentation Screenplay</a></p>
 <ul>
+<li><p><a class="reference internal" href="#led-without-led" id="id10">LED without LED</a></p></li>
+<li><p><a class="reference internal" href="#blocking" id="id11">Blocking</a></p></li>
+<li><p><a class="reference internal" href="#asyncio-basics" id="id12"><cite>asyncio</cite> Basics</a></p>
+<ul>
+<li><p><a class="reference internal" href="#asyncio-basics-py" id="id13"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></p></li>
+<li><p><a class="reference internal" href="#asyncio-parallel-py" id="id14"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#towards-functional" id="id15">Towards Functional</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sos-py" id="id16"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#gpio" id="id17">GPIO</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sos-loop-error-py" id="id18"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#towards-functional-continued" id="id19">Towards Functional, Continued</a></p>
+<ul>
+<li><p><a class="reference internal" href="#decorators-simple-example" id="id20">Decorators: Simple Example</a></p></li>
+<li><p><a class="reference internal" href="#program-decorator-py" id="id21"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#entire-library-of-such-programs" id="id22">Entire Library of Such Programs</a></p></li>
+<li><p><a class="reference internal" href="#easy-programming" id="id23">Easy Programming</a></p></li>
+<li><p><a class="reference internal" href="#push-button-events" id="id24">Push-Button Events</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="led-without-led">
+<h2><a class="toc-backref" href="#id10">LED without LED</a><a class="headerlink" href="#led-without-led" title="Permalink to this headline">¶</a></h2>
+<p>No idea what GPIO is, so I mock it up. We’ll get to <a class="reference internal" href="../../../install/dependencies.html#linkref-libgpiod"><span class="std std-ref">libgpiod</span></a> later.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">LED without nothing</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LED_nohw</span><span class="p">:</span>
+    <span class="n">COLORS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0;31m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0;32m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[1;33m&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">NO_COLOR</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[0m&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">=</span> <span class="n">indent</span>
+    <span class="k">def</span> <span class="nf">on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="o">+</span><span class="s1">&#39;on&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">NO_COLOR</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="o">+</span><span class="s1">&#39;off&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">NO_COLOR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="blocking">
+<h2><a class="toc-backref" href="#id11">Blocking</a><a class="headerlink" href="#blocking" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">000-blink-blocking.py</span></code>: blink one LED, using blocking
+time.sleep() in the middle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">001-blink-multiple-mt.py</span></code>: blink multiple LEDs. Like above, but
+multiple threads.</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Write those</p>
+</div>
+<p>Discussion: hmm, multithreading</p>
+<ul class="simple">
+<li><p>thread termination</p></li>
+<li><p>cache thrashing</p></li>
+<li><p>locking?</p></li>
+</ul>
+</div>
+<div class="section" id="asyncio-basics">
+<h2><a class="toc-backref" href="#id12"><cite>asyncio</cite> Basics</a><a class="headerlink" href="#asyncio-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="asyncio-basics-py">
+<h3><a class="toc-backref" href="#id13"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a><a class="headerlink" href="#asyncio-basics-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">led</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">blink</span><span class="p">(</span><span class="n">led</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">()</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">blink</span><span class="p">(</span><span class="n">led</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Discussion:</p>
+<ul class="simple">
 <li><p>Aha: async, await</p></li>
 <li><p>View with <cite>strace</cite></p></li>
 <li><p>Discuss epoll (select, poll)</p></li>
 </ul>
-</li>
-<li><p><cite>020-asyncio-parallel.py</cite> (LED += color, indent)</p>
-<ul>
-<li><p>Aha, parallel</p></li>
-<li><p>strace: <em>no</em> multithreading</p></li>
+</div>
+<div class="section" id="asyncio-parallel-py">
+<h3><a class="toc-backref" href="#id14"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a><a class="headerlink" href="#asyncio-parallel-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">led</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">blink</span><span class="p">(</span><span class="n">led</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+
+<span class="n">green</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">yellow</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">red</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">blink</span><span class="p">(</span><span class="n">led</span><span class="o">=</span><span class="n">green</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+                   <span class="n">blink</span><span class="p">(</span><span class="n">led</span><span class="o">=</span><span class="n">yellow</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                   <span class="n">blink</span><span class="p">(</span><span class="n">led</span><span class="o">=</span><span class="n">red</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="p">))</span>
+</pre></div>
+</div>
+<p>Discussion:</p>
+<ul class="simple">
+<li><p>Aha, parallel, whats that?</p></li>
+<li><p>strace: look ma, <em>no</em> multithreading</p></li>
 <li><p>Discuss <em>cooperative multitasking</em></p>
 <ul>
 <li><p>Doze 3.11</p></li>
@@ -331,37 +473,370 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>SOS, in a loop, eventually</p>
+</div>
+</div>
+<div class="section" id="towards-functional">
+<h2><a class="toc-backref" href="#id15">Towards Functional</a><a class="headerlink" href="#towards-functional" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sos-py">
+<h3><a class="toc-backref" href="#id16"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a><a class="headerlink" href="#sos-py" title="Permalink to this headline">¶</a></h3>
+<p><strong>SOS</strong></p>
+<ul class="simple">
+<li><p>3 times fast</p></li>
+<li><p>3 times slow</p></li>
+<li><p>3 times fast</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">led</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sos</span><span class="p">(</span><span class="n">led</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">()</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">sos</span><span class="p">(</span><span class="n">led</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Discussion:</p>
+<ul class="simple">
+<li><p>Nothing really new here</p></li>
+<li><p>Next: <em>SOS</em> in a loop, with sleep in between.</p></li>
+<li><p>But first: LEDs in a terminal aren’t so sexy</p>
 <ul>
-<li><p>SOS: 3 times fast, three times slow, three times fast -&gt; one
-routine, <cite>sos()</cite></p></li>
-<li><p><cite>030-sos.py</cite>: linear sequence, SOS. one run, terminate fine.</p></li>
-<li><dl class="simple">
-<dt><cite>040-sos-loop-error.py</cite>: loop around SOS … hmm</dt><dd><p>… <cite>forever()</cite>. problem: coroutine can only be awaited
-once. discuss coroutines, yield?, return (-&gt; coroutine
-termination)</p>
-</dd>
-</dl>
-</li>
-<li><p>Aha: need a factory instead that can “re”create coros</p></li>
+<li><p>Introduce GPIO</p></li>
 </ul>
 </li>
-<li><p>Decorators</p>
+</ul>
+</div>
+</div>
+<div class="section" id="gpio">
+<h2><a class="toc-backref" href="#id17">GPIO</a><a class="headerlink" href="#gpio" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Discuss <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code></p>
+<ul class="simple">
+<li><p>purely Raspi specific</p></li>
+<li><p>Used to map <code class="docutils literal notranslate"><span class="pre">/dev/mem</span></code> -&gt; required root permission</p></li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">/dev/gpiomem</span></code> nowadays -&gt; group gpio (ok)</p></li>
+<li><p>Events: fired from background thread. Outright crap.</p></li>
+</ul>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Discuss sysfs gpio</p>
+<ul class="simple">
+<li><p>File based interface -&gt; simple</p></li>
+<li><p>But …</p>
 <ul>
-<li><p>050-decorator.py</p></li>
+<li><p>Events from <code class="docutils literal notranslate"><span class="pre">value</span></code> file -&gt; have to read fast enough when
+edge is important</p></li>
+<li><p>No event <em>buffering</em> -&gt; event loss</p></li>
+<li><p>unmaintained</p></li>
 </ul>
 </li>
-<li><p><cite>060-program-decorator.py</cite></p>
+</ul>
+</div>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Discuss <a class="reference internal" href="../../../install/dependencies.html#linkref-libgpiod"><span class="std std-ref">libgpiod</span></a></p>
+<ul class="simple">
+<li><p>Complicated set of ioctls</p></li>
+<li><p>Userspace C library</p></li>
+<li><p>Associated programs</p>
 <ul>
-<li><p>three stage decorator. will they understand?</p></li>
-<li><p>start small: decorate sos and run it</p></li>
-<li><p>forever: launches program manually (wrap into ensure_future;
-discuss)</p></li>
-<li><p>helper function launch()</p></li>
+<li><p>Demo</p></li>
 </ul>
 </li>
+<li><p>Binding for Python and C++</p></li>
 </ul>
+</div>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>loop.add_reader() -&gt; events</p>
+</div>
+<div class="section" id="sos-loop-error-py">
+<h3><a class="toc-backref" href="#id18"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a><a class="headerlink" href="#sos-loop-error-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">led</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sos</span><span class="p">(</span><span class="n">led</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">forever</span><span class="p">(</span><span class="n">coro</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">coro</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">()</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">forever</span><span class="p">(</span><span class="n">sos</span><span class="p">(</span><span class="n">led</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Todo</p>
+<p>Use GPIO LED from now on</p>
+</div>
+<p>Error:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ./040-sos-loop-error.py
+on
+... SOS here ...
+off
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&quot;./040-sos-loop-error.py&quot;</span>, line <span class="m">33</span>, in &lt;module&gt;
+    loop.run_until_complete<span class="o">(</span>forever<span class="o">(</span>sos<span class="o">(</span>led<span class="o">)))</span>
+  File <span class="s2">&quot;/usr/lib64/python3.7/asyncio/base_events.py&quot;</span>, line <span class="m">583</span>, in run_until_complete
+    <span class="k">return</span> future.result<span class="o">()</span>
+  File <span class="s2">&quot;./040-sos-loop-error.py&quot;</span>, line <span class="m">28</span>, in forever
+    await coro
+RuntimeError: cannot reuse already awaited coroutine
+</pre></div>
+</div>
+<p>Discussion:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">forever()</span></code>. problem: coroutine can only be awaited once. discuss
+coroutines, yield?, return (-&gt; coroutine termination)</p></li>
+<li><p>Aha: need a factory that can “re”create coros</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="towards-functional-continued">
+<h2><a class="toc-backref" href="#id19">Towards Functional, Continued</a><a class="headerlink" href="#towards-functional-continued" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="decorators-simple-example">
+<h3><a class="toc-backref" href="#id20">Decorators: Simple Example</a><a class="headerlink" href="#decorators-simple-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;args:&#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s1">&#39;, kwargs:&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@debug</span>
+<span class="k">def</span> <span class="nf">hypotenuse</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hypotenuse</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Discussion:</p>
+<ul class="simple">
+<li><p>magic: “&#64;”. Same as saying <code class="docutils literal notranslate"><span class="pre">debug(hypotenuse)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wrapper</span></code> <em>wraps</em> <code class="docutils literal notranslate"><span class="pre">fun</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fun</span></code> is said to be <em>in the closure</em></p></li>
+</ul>
+<p>More evident closure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">hardwired_printer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">_print</span><span class="p">():</span>
+<span class="gp">... </span>            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;args&#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s1">&#39;kwargs&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">_print</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">hardwired_printer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span>
+<span class="go">&lt;function hardwired_printer.&lt;locals&gt;._print at 0x7fb31dcf18c0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span><span class="p">()</span>
+<span class="go">args (1, 2, 3) kwargs {}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">hardwired_printer</span><span class="p">(</span><span class="mi">666</span><span class="p">,</span> <span class="n">answer</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span><span class="p">()</span>
+<span class="go">args (666,) kwargs {&#39;answer&#39;: 42}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="program-decorator-py">
+<h3><a class="toc-backref" href="#id21"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a><a class="headerlink" href="#program-decorator-py" title="Permalink to this headline">¶</a></h3>
+<p>So what’s the problem?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sos()</span></code> terminates -&gt; cannot await it a second time</p></li>
+</ul>
+<p>Solution:</p>
+<ul class="simple">
+<li><p>Need something that <em>remembers</em> the parameters -&gt; decorator</p></li>
+<li><p>That something must be “launchable”</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+
+
+<span class="kn">import</span> <span class="nn">led</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+
+<span class="k">def</span> <span class="nf">program</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">creator</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">launch</span><span class="p">():</span>
+            <span class="c1"># create a coroutine, readily wrapped in a asyncio Future</span>
+            <span class="k">return</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">launch</span>
+    <span class="k">return</span> <span class="n">creator</span>
+
+<span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sos</span><span class="p">(</span><span class="n">led</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">forever</span><span class="p">(</span><span class="o">*</span><span class="n">progs</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">progs</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">p</span><span class="p">()</span>
+            <span class="k">await</span> <span class="n">current</span>
+
+<span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">secs</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">secs</span><span class="p">)</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">led</span><span class="o">.</span><span class="n">LED_nohw</span><span class="p">()</span>
+<span class="n">prog</span> <span class="o">=</span> <span class="n">forever</span><span class="p">(</span><span class="n">sos</span><span class="p">(</span><span class="n">led</span><span class="p">),</span> <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">prog</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="entire-library-of-such-programs">
+<h2><a class="toc-backref" href="#id22">Entire Library of Such Programs</a><a class="headerlink" href="#entire-library-of-such-programs" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sequence</span><span class="p">(</span><span class="o">*</span><span class="n">progs</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">prog</span> <span class="ow">in</span> <span class="n">progs</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">launch</span><span class="p">(</span><span class="n">prog</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">current</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">current</span><span class="p">:</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">n_times</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">prog</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">launch</span><span class="p">(</span><span class="n">prog</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">current</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">current</span><span class="p">:</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">forever</span><span class="p">(</span><span class="o">*</span><span class="n">progs</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">prog</span> <span class="ow">in</span> <span class="n">progs</span><span class="p">:</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">launch</span><span class="p">(</span><span class="n">prog</span><span class="p">)</span>
+                <span class="k">await</span> <span class="n">current</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">current</span><span class="p">:</span> 
+            <span class="n">current</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="o">*</span><span class="n">progs</span><span class="p">):</span>
+    <span class="s1">&#39;run progs in parallel and wail until all are done&#39;</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">p</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">progs</span><span class="p">]))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">task</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">any</span><span class="p">(</span><span class="o">*</span><span class="n">progs</span><span class="p">):</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">launch</span><span class="p">(</span><span class="n">prog</span><span class="p">)</span> <span class="k">for</span> <span class="n">prog</span> <span class="ow">in</span> <span class="n">progs</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">done</span><span class="p">,</span> <span class="n">pending</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">return_when</span><span class="o">=</span><span class="n">asyncio</span><span class="o">.</span><span class="n">FIRST_COMPLETED</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pending</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@program</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">wait_button</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">button</span><span class="o">.</span><span class="n">state_changed</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="easy-programming">
+<h2><a class="toc-backref" href="#id23">Easy Programming</a><a class="headerlink" href="#easy-programming" title="Permalink to this headline">¶</a></h2>
+<p>Examples …</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forever</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">blink</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">green</span><span class="o">.</span><span class="n">led</span><span class="p">)),</span>
+        <span class="nb">any</span><span class="p">(</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">blink</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">yellow</span><span class="o">.</span><span class="n">led</span><span class="p">)),</span>
+        <span class="nb">any</span><span class="p">(</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">blink</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">red</span><span class="o">.</span><span class="n">led</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="push-button-events">
+<h2><a class="toc-backref" href="#id24">Push-Button Events</a><a class="headerlink" href="#push-button-events" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id7">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Live-hacking: debounce buttons</p></li>
+<li><p>wait_button()</p></li>
+<li><p>subprocess_shell()</p></li>
+<li><p>http_get()</p></li>
+<li><p>blink.open_url()</p></li>
+</ul>
+</div>
 </div>
 </div>
 

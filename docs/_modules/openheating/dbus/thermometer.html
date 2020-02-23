@@ -118,22 +118,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html">Onewire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../doc/faschingbauer/w1/w1.html#issues">Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../doc/marketing/index.html">Marketing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../doc/marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../doc/marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/marketing/glt2020/blink.html">Talk Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink.html#cv">CV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink.html#abstract">Abstract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink.html#topics">Topics</a></li>
@@ -141,7 +138,29 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#led-without-led">LED without LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#blocking">Blocking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#asyncio-basics-py"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#asyncio-parallel-py"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#towards-functional">Towards Functional</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#sos-py"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#gpio">GPIO</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#sos-loop-error-py"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#towards-functional-continued">Towards Functional, Continued</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#decorators-simple-example">Decorators: Simple Example</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#program-decorator-py"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#entire-library-of-such-programs">Entire Library of Such Programs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#easy-programming">Easy Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/marketing/glt2020/blink/Screenplay.html#push-button-events">Push-Button Events</a></li>
 </ul>
 </li>
 </ul>

@@ -120,22 +120,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">Onewire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#issues">Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink.html">Talk Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#cv">CV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#abstract">Abstract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#topics">Topics</a></li>
@@ -143,7 +140,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#led-without-led">LED without LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#blocking">Blocking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics-py"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-parallel-py"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -341,7 +344,7 @@ interpolation done somewhere.</p>
 <p>(Upgrading makes sense, especially with these)</p>
 </div>
 <div class="section" id="gpio-libgpiod">
-<h2>GPIO: <cite>libgpiod</cite><a class="headerlink" href="#gpio-libgpiod" title="Permalink to this headline">¶</a></h2>
+<span id="linkref-libgpiod"></span><h2>GPIO: <cite>libgpiod</cite><a class="headerlink" href="#gpio-libgpiod" title="Permalink to this headline">¶</a></h2>
 <p><cite>libgpiod</cite> is a C library directly on top of the descriptor based GPIO
 interface.</p>
 <p>The “integer based” sysfs interface has been deprecated a while ago
@@ -365,8 +368,8 @@ needs some love.</p>
 </div>
 </li>
 <li><p><em>Prepare for Build</em></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
 <p><em>Rant!</em></p>
 <p>I haven’t found a way to set <code class="docutils literal notranslate"><span class="pre">aclocal</span></code>’s M4 path into
 <code class="docutils literal notranslate"><span class="pre">autoconf-archive/m4</span></code>, so I simply copy it to <code class="docutils literal notranslate"><span class="pre">libgpiod/m4/</span></code>.</p>
@@ -382,7 +385,6 @@ needs some love.</p>
 <li><p><em>Build and Install</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em>Rant!</em></p>
 <p>We install into <code class="docutils literal notranslate"><span class="pre">/usr</span></code>. <em>Reason</em>: OpenHeating services are
 started by systemd, and there is no easy way to point its
 <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> to somewhere else.</p>
@@ -395,7 +397,22 @@ started by systemd, and there is no easy way to point its
 </pre></div>
 </div>
 </li>
-<li><p><em>Fix bullshit</em></p>
+<li><p><em>Fix bullshit</em>: <code class="docutils literal notranslate"><span class="pre">gpiod</span></code> module not found</p>
+<p>The previous step installed <code class="docutils literal notranslate"><span class="pre">libgpiod</span></code>’s Python binding into
+<code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/site-packages/</span></code>. (The build system uses
+<a class="reference external" href="https://www.gnu.org/software/automake/">Automake</a> and its
+<a class="reference external" href="https://www.gnu.org/software/automake/manual/html_node/Python.html">Python support</a>.)</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ls -l /usr/lib/python3.5/site-packages/
+total <span class="m">248</span>
+-rw-r--r-- <span class="m">1</span> root root <span class="m">128878</span> Feb <span class="m">19</span> <span class="m">13</span>:59 gpiod.a
+-rwxr-xr-x <span class="m">1</span> root root    <span class="m">986</span> Feb <span class="m">19</span> <span class="m">13</span>:59 gpiod.la
+-rwxr-xr-x <span class="m">1</span> root root <span class="m">117464</span> Feb <span class="m">19</span> <span class="m">13</span>:59 gpiod.so
+</pre></div>
+</div>
+<p>Reading <a class="reference external" href="https://docs.python.org/3.5/library/site.html">the documentation for Python’s site module</a>, Python should be
+able to pick it up from there. <code class="docutils literal notranslate"><span class="pre">gpiod.so</span></code> is the Python <code class="docutils literal notranslate"><span class="pre">gpiod</span></code>
+module, a C extension in the form of a shared object.</p>
+<p>But no,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span>
 <span class="go">&#39;3.5.3 (default, Sep 27 2018, 17:25:39) \n[GCC 6.3.0 20170516]&#39;</span>
@@ -405,24 +422,21 @@ started by systemd, and there is no easy way to point its
 <span class="gr">ImportError</span>: <span class="n">No module named &#39;gpiod&#39;</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><em>WTF!</em></p>
-<p><code class="docutils literal notranslate"><span class="pre">libgpiod</span></code>’s Python binding is built and installed by
-Automake. Although I know Automake well enough to stay away as
-much as I can (I haven’t been able to <em>explain</em> it to anybody,
-and I’m convinced that’s not my fault), its Python support
-appears to be well, and libgpiod uses it correctly as far as I
-can see. It detects the Python version, and installs into
-<code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/site-packages</span></code>. Reading <a class="reference external" href="https://docs.python.org/3.5/library/site.html">the documentation
-for Python’s site module</a>, Python should
-be able to pick it up from there.</p>
+<p>No <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> in Python’s module load path,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="go">[&#39;&#39;, &#39;/usr/lib/python35.zip&#39;, &#39;/usr/lib/python3.5&#39;, &#39;/usr/lib/python3.5/plat-arm-linux-gnueabihf&#39;, &#39;/usr/lib/python3.5/lib-dynload&#39;, &#39;/usr/local/lib/python3.5/dist-packages&#39;, &#39;/usr/lib/python3/dist-packages&#39;]</span>
+</pre></div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
 <p><strong>WTF! It that an artifact of Debian/Raspbian?</strong></p>
 </div>
 <p>Anyway … knowing that we cannot simply fix that by adding
 <code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/site-packages</span></code> to the environment (via
 <code class="docutils literal notranslate"><span class="pre">/etc/profile.d/</span></code> for example) because systemd does not pull that
-in, we add it to <code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/sitecustomize.py</span></code>.</p>
+in (SysV init doesn’t too btw.), we add it to
+<code class="docutils literal notranslate"><span class="pre">/usr/lib/python3.5/sitecustomize.py</span></code>.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>root<span class="o">)</span>$ cat <span class="s">&lt;&lt;EOF &gt;&gt; /usr/lib/python3.5/sitecustomize.py</span>
 <span class="s">import site</span>
 <span class="s">site.addsitedir(&#39;/usr/lib/python3.5/site-packages&#39;)</span>

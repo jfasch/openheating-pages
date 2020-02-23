@@ -100,8 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#systemd-unit-generator"><cite>systemd</cite> Unit Generator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#systemd-units"><cite>systemd</cite> Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#dbus-configuration">DBus Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../install/installation.html#finally-startup">Finally: Startup</a></li>
 </ul>
@@ -120,22 +120,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faschingbauer/w1/w1.html">Onewire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../faschingbauer/w1/w1.html#issues">Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Marketing</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Grazer Linuxtage 2020</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="blink.html">CfP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="blink.html">Talk Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="blink.html#cv">CV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="blink.html#abstract">Abstract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="blink.html#topics">Topics</a></li>
@@ -143,7 +140,29 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#led-without-led">LED without LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#blocking">Blocking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="blink/Screenplay.html#asyncio-basics-py"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="blink/Screenplay.html#asyncio-parallel-py"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#towards-functional">Towards Functional</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="blink/Screenplay.html#sos-py"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#gpio">GPIO</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="blink/Screenplay.html#sos-loop-error-py"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#towards-functional-continued">Towards Functional, Continued</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="blink/Screenplay.html#decorators-simple-example">Decorators: Simple Example</a></li>
+<li class="toctree-l5"><a class="reference internal" href="blink/Screenplay.html#program-decorator-py"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#entire-library-of-such-programs">Entire Library of Such Programs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#easy-programming">Easy Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="blink/Screenplay.html#push-button-events">Push-Button Events</a></li>
 </ul>
 </li>
 </ul>
@@ -306,8 +325,6 @@
             
   <div class="section" id="grazer-linuxtage-2020">
 <h1>Grazer Linuxtage 2020<a class="headerlink" href="#grazer-linuxtage-2020" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
 <p><a class="reference external" href="https://www.linuxtage.at/">Grazer Linuxtage</a> is a Linux centric
 Open Source conference here in my <a class="reference external" href="https://www.google.at/maps/place/Graz/&#64;47.0736852,15.371751,12z/data=!3m1!4b1!4m5!3m4!1s0x476e3587173065bb:0xfe8e8ad1d2dfdd9b!8m2!3d47.0701218!4d15.4385376">hometown</a>. I
 intend to give a 45 minutes talk there.</p>
@@ -317,6 +334,12 @@ intend to give a 45 minutes talk there.</p>
 <p>I came across a really … well … interesting? … way how to do
 that. Blinking and switching in Linux is <em>really boring</em>, you may
 think, but there’s still a lot to say. But read the <a class="reference internal" href="blink.html"><span class="doc">proposal</span></a> that I sent.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="blink.html">Talk Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a></li>
+</ul>
+</div>
 </div>
 
 
