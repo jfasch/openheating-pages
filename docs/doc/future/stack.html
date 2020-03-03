@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Ideas" href="ideas.html" />
+    <link rel="next" title="Panel" href="panel.html" />
     <link rel="prev" title="What the Future Maybe Brings" href="index.html" /> 
 </head>
 
@@ -120,22 +120,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">RJ11 Plugs, Pins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#parasitic-vs-powered">Parasitic vs. Powered</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">Onewire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#stability">Stability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#w1-gpio">w1-gpio</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#raspberry-devicetree-overlay-situation">Raspberry Devicetree Overlay Situation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html#issues">Issues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink.html">CfP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink.html">Talk Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#cv">CV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#abstract">Abstract</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#topics">Topics</a></li>
@@ -143,7 +140,29 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#led-without-led">LED without LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#blocking">Blocking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics-py"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-parallel-py"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#towards-functional">Towards Functional</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#sos-py"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#gpio">GPIO</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#sos-loop-error-py"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#towards-functional-continued">Towards Functional, Continued</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#decorators-simple-example">Decorators: Simple Example</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#program-decorator-py"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#entire-library-of-such-programs">Entire Library of Such Programs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#easy-programming">Easy Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#push-button-events">Push-Button Events</a></li>
 </ul>
 </li>
 </ul>
@@ -166,20 +185,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#autostart">Autostart</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../misc/gh-pages/index.html">Github Pages as Hosting Platform</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html">Deploying Sphinx Generated Documentation to Github Pages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#create-site-publication-repo">Create “Site Publication Repo”</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#configure-github-pages-for-jfasch-openheating-pages">Configure Github Pages for <code class="file docutils literal notranslate"><span class="pre">jfasch/openheating-pages</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/sphinx-gh-pages.html#time-for-deployment">Time for Deployment</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html">Adding a Custom Domain to a Github Pages Project Site</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-a-subdomain-www-openheating-org">Configure a Subdomain, <code class="docutils literal notranslate"><span class="pre">www.openheating.org</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../misc/gh-pages/custom-domain-gh-pages.html#configure-an-apex-domain-openheating-org">Configure an Apex Domain, <code class="docutils literal notranslate"><span class="pre">openheating.org</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">What the Future Maybe Brings</a><ul class="current">
@@ -188,8 +193,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#component-documentation">Component Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ideas.html">Ideas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ideas.html#panel">Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="panel.html#id1">Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="web.html">Web Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="web.html#vue">Vue</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ideas.html">Lots of Vague Ideas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ideas.html#project-structure-cleanup">Project Structure Cleanup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ideas.html#documentation">Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ideas.html#more-heatingisms">More Heatingisms</a></li>
@@ -362,7 +374,7 @@ components, todo, panel</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ideas.html" class="btn btn-neutral float-right" title="Ideas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="panel.html" class="btn btn-neutral float-right" title="Panel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="What the Future Maybe Brings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
