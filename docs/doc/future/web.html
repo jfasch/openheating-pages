@@ -100,6 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#i2c-onewire-master-config">I2C Onewire Master Config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#dbus-configuration">DBus Configuration</a></li>
@@ -115,19 +116,38 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faschingbauer/index.html">Faschingbauer Installation Specifics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/gpio/gpio.html">GPIO</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/relays.html">Switches/Relays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/relays.html#sainsmart-8-channel-5v-relay-board">Sainsmart 8 Channel 5V Relay Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/relays.html#uln2803a-darlington-transistor-array">ULN2803A Darlington Transistor Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/relays.html#raspberry-gpio-usage">Raspberry GPIO Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/relays.html#long-story-short-gpio-relay-mapping">Long Story Short: GPIO/Relay Mapping</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/w1/w1.html">Onewire</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#stability">Stability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/relays.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/relays.html#bookmarks-electronics-etc">Bookmarks: Electronics etc.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/relays.html#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/electrics.html">Unsorted Electrical Things</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faschingbauer/thermometers.html">Thermometers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/thermometers.html#sensors-ds18b20">Sensors: DS18B20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/thermometers.html#cabling">Cabling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/thermometers.html#rj11-telephone-wires">RJ11, Telephone Wires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/thermometers.html#onewire-caveats">Onewire Caveats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../faschingbauer/thermometers.html#onewire-master-and-stability">Onewire Master and Stability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/thermometers.html#w1-gpio-bitbanging"><code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code>: Bitbanging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../faschingbauer/thermometers.html#ds2482-800-master-on-i2c">DS2482-800+: Master on I2C</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../faschingbauer/thermometers.html#enable-i2c-on-the-raspi">Enable I2C on the Raspi</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../faschingbauer/thermometers.html#announce-the-i2c-device-to-the-os">Announce the I2C device to the OS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
@@ -194,6 +214,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="panel.html#gpio">GPIO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="panel.html#uln2803a">ULN2803A</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="panel.html#id1">Panel</a></li>
 </ul>
 </li>

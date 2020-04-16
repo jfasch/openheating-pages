@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Thermometers &mdash; openheating 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Marketing" href="../marketing/index.html" />
+    <link rel="prev" title="Switches/Relays" href="relays.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> openheating
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/dependencies.html">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/dependencies.html#dbus-pydbus">DBus: pydbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/dependencies.html#systemd-startup-notification"><cite>systemd</cite> Startup Notification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/dependencies.html#flask">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/dependencies.html#gradients-interpolation-graphs">Gradients, Interpolation, Graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/dependencies.html#gpio-libgpiod">GPIO: <cite>libgpiod</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../install/dependencies.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../install/dependencies.html#links">Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../install/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#get-the-source">Get the Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#bootloader">Bootloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#create-user">Create User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#i2c-onewire-master-config">I2C Onewire Master Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#http-service">HTTP Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#dbus-configuration">DBus Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#finally-startup">Finally: Startup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Motivation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../motivation.html#current-goal-keep-my-house-warm">Current Goal: Keep my House Warm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motivation.html#rant">Rant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motivation.html#plan">Plan</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Faschingbauer Installation Specifics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="relays.html">Switches/Relays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relays.html#sainsmart-8-channel-5v-relay-board">Sainsmart 8 Channel 5V Relay Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relays.html#uln2803a-darlington-transistor-array">ULN2803A Darlington Transistor Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relays.html#raspberry-gpio-usage">Raspberry GPIO Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="relays.html#long-story-short-gpio-relay-mapping">Long Story Short: GPIO/Relay Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="relays.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="relays.html#bookmarks-electronics-etc">Bookmarks: Electronics etc.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="relays.html#using-mcp23017">Using MCP23017</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Thermometers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sensors-ds18b20">Sensors: DS18B20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cabling">Cabling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rj11-telephone-wires">RJ11, Telephone Wires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#onewire-caveats">Onewire Caveats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#onewire-master-and-stability">Onewire Master and Stability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#w1-gpio-bitbanging"><code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code>: Bitbanging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ds2482-800-master-on-i2c">DS2482-800+: Master on I2C</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#enable-i2c-on-the-raspi">Enable I2C on the Raspi</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#announce-the-i2c-device-to-the-os">Announce the I2C device to the OS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marketing/glt2020/index.html">Grazer Linuxtage 2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink.html">Talk Summary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#cv">CV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#topics">Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink.html#use-case">Use Case</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html">GLT2020 “Blink” Presentation Screenplay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#led-without-led">LED without LED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#blocking">Blocking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics"><cite>asyncio</cite> Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-basics-py"><code class="docutils literal notranslate"><span class="pre">010-asyncio-basics.py</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#asyncio-parallel-py"><code class="docutils literal notranslate"><span class="pre">020-asyncio-parallel.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#towards-functional">Towards Functional</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#sos-py"><code class="docutils literal notranslate"><span class="pre">030-sos.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#gpio">GPIO</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#sos-loop-error-py"><code class="docutils literal notranslate"><span class="pre">040-sos-loop-error.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#towards-functional-continued">Towards Functional, Continued</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#decorators-simple-example">Decorators: Simple Example</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#program-decorator-py"><code class="docutils literal notranslate"><span class="pre">060-program-decorator.py</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#entire-library-of-such-programs">Entire Library of Such Programs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#easy-programming">Easy Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../marketing/glt2020/blink/Screenplay.html#push-button-events">Push-Button Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../marketing/heating.html">OpenHeating Presentation Ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">Miscellaneous Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/dbus.html">D-Bus Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/dbus.html#calling-object-methods">Calling Object Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../misc/dbus.html#thermometer-service">Thermometer Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/dbus.html#introspection">Introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/dbus.html#debug-monitor">Debug, Monitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#hardware">Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/panel.html#autostart">Autostart</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../future/index.html">What the Future Maybe Brings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../future/stack.html">Stacks (Hanging)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/stack.html#hotwater-circuit-overtake">Hotwater Circuit Overtake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/stack.html#component-documentation">Component Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../future/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/panel.html#gpio">GPIO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../future/panel.html#uln2803a">ULN2803A</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../future/panel.html#id1">Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../future/web.html">Web Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/web.html#vue">Vue</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../future/ideas.html">Lots of Vague Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#project-structure-cleanup">Project Structure Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../future/ideas.html#more-heatingisms">More Heatingisms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../github.html">Getting the Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/index.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/architecture.html">Architectural Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/architecture.html#polling">Polling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/main.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Main</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/main.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/main.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/main.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/thermometers.html">Thermometers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#objects-provided">Objects Provided</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/thermometers.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/switches.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Switches</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/switches.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/switches.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/switches.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/circuits.html"><code class="docutils literal notranslate"><span class="pre">org.openheating.Circuits</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/circuits.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/circuits.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/circuits.html#sample-configuration-file">Sample Configuration File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/oil.html">Oil Burner Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/wood.html">Wood Oven Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/room.html">Room Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/boiler.html">Warm Water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/dbus-objects.html">D-Bus Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Running Plant Under Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unittests/index.html">Running Unittests</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">openheating</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Faschingbauer Installation Specifics</a> &raquo;</li>
+        
+      <li>Thermometers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/doc/faschingbauer/thermometers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="thermometers">
+<h1>Thermometers<a class="headerlink" href="#thermometers" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sensors-ds18b20" id="id9">Sensors: DS18B20</a></p></li>
+<li><p><a class="reference internal" href="#cabling" id="id10">Cabling</a></p>
+<ul>
+<li><p><a class="reference internal" href="#rj11-telephone-wires" id="id11">RJ11, Telephone Wires</a></p></li>
+<li><p><a class="reference internal" href="#onewire-caveats" id="id12">Onewire Caveats</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#onewire-master-and-stability" id="id13">Onewire Master and Stability</a></p>
+<ul>
+<li><p><a class="reference internal" href="#w1-gpio-bitbanging" id="id14"><code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code>: Bitbanging</a></p></li>
+<li><p><a class="reference internal" href="#ds2482-800-master-on-i2c" id="id15">DS2482-800+: Master on I2C</a></p>
+<ul>
+<li><p><a class="reference internal" href="#enable-i2c-on-the-raspi" id="id16">Enable I2C on the Raspi</a></p></li>
+<li><p><a class="reference internal" href="#announce-the-i2c-device-to-the-os" id="id17">Announce the I2C device to the OS</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sensors-ds18b20">
+<h2><a class="toc-backref" href="#id9">Sensors: DS18B20</a><a class="headerlink" href="#sensors-ds18b20" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.maximintegrated.com/en/products/DS18B20">DS18B20</a>
+Onewire temperature sensor is frequently used in comparable settings
+<a class="footnote-reference brackets" href="#everyone-does-it" id="id1">1</a>. You can finds parts that come prepackaged in a
+metal case; these are still affordable, and really easy to deploy.</p>
+<div class="figure align-left" id="id4">
+<img alt="DS18B20 (packaged)" src="../../_images/ds18b20-packaged.jpg" />
+<p class="caption"><span class="caption-text">DS18B20, nicely packaged in a metal case with cable</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-right" id="id5">
+<img alt="DS18B20 (mounted)" src="../../_images/ds18b20-mounted.jpg" />
+<p class="caption"><span class="caption-text">DS18B20, mounted on <em>real</em> hardware</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="cabling">
+<h2><a class="toc-backref" href="#id10">Cabling</a><a class="headerlink" href="#cabling" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/1-Wire">Onewire</a> device has three
+wires attached to: data, ground, and power. Data and ground are
+mandatory, obviously. Power is optional; if omitted, the device is
+said to be operated in <em>parasitic mode</em>.</p>
+<p>That said, I use all three wires, mainly because rumours go that
+communication is more stable then. (I cannot say, tried both, no
+difference.)</p>
+<div class="section" id="rj11-telephone-wires">
+<h3><a class="toc-backref" href="#id11">RJ11, Telephone Wires</a><a class="headerlink" href="#rj11-telephone-wires" title="Permalink to this headline">¶</a></h3>
+<p>“Telephone” cables have four wires (only three are used); you can buy
+them everywhere. Telephones are connected with RJ11 plugs. I use this
+setting in the following way.</p>
+<div class="figure align-default" id="id6">
+<a class="reference internal image-reference" href="../../_images/rj11-pinout.jpg"><img alt="RJ11 pinout" src="../../_images/rj11-pinout.jpg" style="width: 240.0px; height: 320.0px;" /></a>
+<p class="caption"><span class="caption-text">Facing copper contacts,</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Color</p></th>
+<th class="head"><p>What</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Red</p></td>
+<td><p>VCC</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Black</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Yellow</p></td>
+<td><p>Data</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>White</p></td>
+<td><p>(Unused)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>With this at hand,</p>
+<ul class="simple">
+<li><p>sensors with plugs</p></li>
+<li><p>cables with plugs on either side</p></li>
+</ul>
+<p>there’s two more things you need to be happy,</p>
+<div class="figure align-default" id="id7">
+<a class="reference internal image-reference" href="../../_images/rj11-hub.jpg"><img alt="RJ11 hub" src="../../_images/rj11-hub.jpg" style="width: 254.0px; height: 118.0px;" /></a>
+<p class="caption"><span class="caption-text">RJ11 hub</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id8">
+<img alt="RJ11 coupler" src="../../_images/rj11-coupler.jpg" />
+<p class="caption"><span class="caption-text">RJ11 coupler</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please don’t think that I am so picky and exact in everything I
+do. Only when I know I am really bad at something (like money) I
+tend to be exact.</p>
+</div>
+</div>
+<div class="section" id="onewire-caveats">
+<h3><a class="toc-backref" href="#id12">Onewire Caveats</a><a class="headerlink" href="#onewire-caveats" title="Permalink to this headline">¶</a></h3>
+<p>For stability, a Onewire setup should not exhibit a star
+topology. Rather, it is best to have a long line, with only short
+branches where the sensors are attached.</p>
+<p>I have multiple long lines from the “central” (in the basement next to
+the oil burner) to the various branching points,</p>
+<ul class="simple">
+<li><p>Hot water boiler. A 1000l thing which has three thermometers:
+bottom, middle, top. These thermometers, and two more for the solar
+water circuit, branch off from the end of a ca. 15m line.</p></li>
+<li><p>Wood oven in the living room. A ca. 8m line, having another four
+thermometers.</p></li>
+<li><p>One long 15m line where one room thermometer sits in the middle adn
+one at the end.</p></li>
+</ul>
+<p>Maxim Integrated has a tutorial, <a class="reference external" href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/148">Guidelines for Reliable Long Line
+1-Wire Networks</a>. There
+they define the terms <em>radious</em> and <em>weight</em>; it is definitely worth
+reading.</p>
+</div>
+</div>
+<div class="section" id="onewire-master-and-stability">
+<h2><a class="toc-backref" href="#id13">Onewire Master and Stability</a><a class="headerlink" href="#onewire-master-and-stability" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="w1-gpio-bitbanging">
+<h3><a class="toc-backref" href="#id14"><code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code>: Bitbanging</a><a class="headerlink" href="#w1-gpio-bitbanging" title="Permalink to this headline">¶</a></h3>
+<p>Initially I was using the <code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code> kernel module, where you
+dedicate one GPIO to one Onewire line. Communication is done in
+software - the kernel driver bitbangs the Onewire protocol onto the
+line. I had dedicated three GPIOs, one each for the lines listed
+above.</p>
+<p>Configuration is easy; in <code class="docutils literal notranslate"><span class="pre">/boot/config.txt</span></code> you write,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">dtoverlay=w1-gpio,gpiopin=7</span>
+<span class="go">dtoverlay=w1-gpio,gpiopin=26</span>
+<span class="go">dtoverlay=w1-gpio,gpiopin=27</span>
+</pre></div>
+</div>
+<p>, and connect the respective pins to the three bus lines.</p>
+<p>During that time, there were still instabilities; I summarize them
+here for reference (and because in my nightmares I see those coming
+back).</p>
+<ul>
+<li><p><strong>Devices disappear</strong>, and are replaced by ones that are named like
+<code class="docutils literal notranslate"><span class="pre">00-0c4000000000</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">00</span></code> is the family which is completely
+bogus; for example, 28 (hex) would be the expected familiy. (I
+believe 0x28 stands for “Dallas”).</p></li>
+<li><p><strong>Reading fails a CRC check</strong>,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ cat /sys/bus/w1/devices/28-02131d9920aa/w1_slave
+<span class="m">20</span> <span class="m">01</span> 4b <span class="m">46</span> 7f ff 0c <span class="m">10</span> 5d : <span class="nv">crc</span><span class="o">=</span>5d NO
+<span class="m">20</span> <span class="m">01</span> 4b <span class="m">46</span> 7f ff 0c <span class="m">10</span> 5d <span class="nv">t</span><span class="o">=</span><span class="m">18000</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Reading gives me a temperature of 0 degrees.</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ cat /sys/bus/w1/devices/28-011432f138f9/w1_slave
+<span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> : <span class="nv">crc</span><span class="o">=</span><span class="m">00</span> YES
+<span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="nv">t</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<p>This is the worst thermometer error you can encounter because it
+does not declare himself as such. One can imagine what sorts of
+heating control misbehavior a room temperature of zero degrees would
+cause.</p>
+</li>
+</ul>
+<p>Over time, I was able to reduce the instabilities by cutting the
+initial star topology down to what I describe above. Still, there were
+some glitches from time to time. I blame those on the bitbanging in
+software. Onewire is a slow and easy protocol, but there are still
+timing constraints that might not be met in some cases.</p>
+<p>Sure, I could have tried the Linux realtime options to get better
+response and timing guarantees. On the other hand, heating control is
+something that is exactly the opposite of realtime. If a pump is
+turned on a minute too late, still nothing burns down - this is not a
+nuclear power plant.</p>
+<p>So no: no realtime wanted. Especially because it would have been just
+another tryout.</p>
+</div>
+<div class="section" id="ds2482-800-master-on-i2c">
+<h3><a class="toc-backref" href="#id15">DS2482-800+: Master on I2C</a><a class="headerlink" href="#ds2482-800-master-on-i2c" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://www.maximintegrated.com/en/products/interface/controllers-expanders/DS2482-800.html">DS2482-800</a>
+is an eight port Onewire master that is connected to the CPU via
+I2C. Eight port means, you can have eight long Onewire lines with one
+chip. Cool; should have done that earlier <a class="footnote-reference brackets" href="#know-what-not-want" id="id2">2</a>.</p>
+<p>Setup is easy; here’s a little excerpt from the datasheet.</p>
+<img alt="../../_images/ds2482-800.gif" src="../../_images/ds2482-800.gif" />
+<p>Pullups are sized 2.2K; you can find that mentioned somewhere in the
+datasheet <a class="footnote-reference brackets" href="#datasheet-fun" id="id3">3</a>.</p>
+<p>To tell the Raspi and Linux about it,</p>
+<div class="section" id="enable-i2c-on-the-raspi">
+<h4><a class="toc-backref" href="#id16">Enable I2C on the Raspi</a><a class="headerlink" href="#enable-i2c-on-the-raspi" title="Permalink to this headline">¶</a></h4>
+<p>In <code class="docutils literal notranslate"><span class="pre">/boot/config.txt</span></code> you write</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">dtparam=ic2=on</span>
+<span class="go">i2c_arm=on</span>
+</pre></div>
+</div>
+<p>(In <code class="docutils literal notranslate"><span class="pre">/boot/overlays/README</span></code> both are documented, so I write both. I
+can imagine that one can be omitted, but I don’t care.)</p>
+</div>
+<div class="section" id="announce-the-i2c-device-to-the-os">
+<h4><a class="toc-backref" href="#id17">Announce the I2C device to the OS</a><a class="headerlink" href="#announce-the-i2c-device-to-the-os" title="Permalink to this headline">¶</a></h4>
+<p>In the above diagram, pins <code class="docutils literal notranslate"><span class="pre">AD0</span></code>, <code class="docutils literal notranslate"><span class="pre">AD1</span></code>, and <code class="docutils literal notranslate"><span class="pre">AD2</span></code> are connected
+to ground, which yields I2C address 0x18 for the device.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> ds2482 0x18 &gt; /sys/bus/i2c/devices/i2c-1/new_device
+</pre></div>
+</div>
+<p>This creates a new I2C device in <code class="docutils literal notranslate"><span class="pre">sysfs</span></code>,
+<code class="docutils literal notranslate"><span class="pre">/sys/bus/i2c/devices/i2c-1/1-0018/</span></code>, and loads the <code class="docutils literal notranslate"><span class="pre">ds2482</span></code>
+kernel module. Onewire devices are probed, and appear in
+<code class="docutils literal notranslate"><span class="pre">/sys/bus/w1/devices/</span></code>, just like with <code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code>.</p>
+<p>Here’s a <code class="docutils literal notranslate"><span class="pre">systemd</span></code> unit that does just that,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Instantiate</span> <span class="n">DS2482</span> <span class="n">at</span> <span class="n">I2C</span><span class="o">-</span><span class="mi">1</span><span class="nd">@0x18</span>
+<span class="n">After</span><span class="o">=</span><span class="n">basic</span><span class="o">.</span><span class="n">target</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">oneshot</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;/bin/echo ds2482 0x18 &gt; /sys/bus/i2c/devices/i2c-1/new_device&#39;</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">openheating</span><span class="o">-</span><span class="n">thermometers</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p><strong>The effect? No sensor outages since I deployed the DS2482-800 (which
+is roughly two months as of this writing).</strong></p>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="everyone-does-it"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Everyone does their own private heating
+control. Mine is just the best.</p>
+</dd>
+<dt class="label" id="know-what-not-want"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>On the other hand: what you should always
+know for sure is <em>what you don’t want</em> - the
+time spent with bitbanging was not wasted.</p>
+</dd>
+<dt class="label" id="datasheet-fun"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Datasheet authors have a strange kind of humor.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../marketing/index.html" class="btn btn-neutral float-right" title="Marketing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="relays.html" class="btn btn-neutral float-left" title="Switches/Relays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Jörg Faschingbauer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

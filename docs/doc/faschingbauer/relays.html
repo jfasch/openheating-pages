@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Unsorted Electrical Things &mdash; openheating 0.0.0 documentation</title>
+  <title>Switches/Relays &mdash; openheating 0.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Marketing" href="../marketing/index.html" />
-    <link rel="prev" title="Onewire" href="w1/w1.html" /> 
+    <link rel="next" title="Thermometers" href="thermometers.html" />
+    <link rel="prev" title="Faschingbauer Installation Specifics" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,6 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#bootloader">Bootloader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#create-user">Create User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#openheating-configuration">OpenHeating Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../install/installation.html#i2c-onewire-master-config">I2C Onewire Master Config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#systemd-unit-generator-and-plant-startup"><cite>systemd</cite> Unit Generator, and Plant Startup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#http-service">HTTP Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../install/installation.html#dbus-configuration">DBus Configuration</a></li>
@@ -115,19 +116,38 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Faschingbauer Installation Specifics</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="gpio/gpio.html">GPIO</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="gpio/gpio.html#using-built-in-gpios">Using Built-In GPIOs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gpio/gpio.html#using-mcp23017">Using MCP23017</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Switches/Relays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sainsmart-8-channel-5v-relay-board">Sainsmart 8 Channel 5V Relay Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uln2803a-darlington-transistor-array">ULN2803A Darlington Transistor Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raspberry-gpio-usage">Raspberry GPIO Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#long-story-short-gpio-relay-mapping">Long Story Short: GPIO/Relay Mapping</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="w1/w1.html">Onewire</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#rj11-plugs-pins">RJ11 Plugs, Pins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#stability">Stability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#onewire-master-in-software-bitbanging">Onewire Master in Software: Bitbanging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="w1/w1.html#onewire-master-in-hardware-ds2482">Onewire Master in Hardware: <code class="docutils literal notranslate"><span class="pre">DS2482</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bookmarks-electronics-etc">Bookmarks: Electronics etc.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-mcp23017">Using MCP23017</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Unsorted Electrical Things</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="thermometers.html">Thermometers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="thermometers.html#sensors-ds18b20">Sensors: DS18B20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermometers.html#cabling">Cabling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="thermometers.html#rj11-telephone-wires">RJ11, Telephone Wires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thermometers.html#onewire-caveats">Onewire Caveats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="thermometers.html#onewire-master-and-stability">Onewire Master and Stability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="thermometers.html#w1-gpio-bitbanging"><code class="docutils literal notranslate"><span class="pre">w1-gpio</span></code>: Bitbanging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thermometers.html#ds2482-800-master-on-i2c">DS2482-800+: Master on I2C</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="thermometers.html#enable-i2c-on-the-raspi">Enable I2C on the Raspi</a></li>
+<li class="toctree-l5"><a class="reference internal" href="thermometers.html#announce-the-i2c-device-to-the-os">Announce the I2C device to the OS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../marketing/index.html">Marketing</a><ul>
@@ -194,6 +214,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../future/panel.html">Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../future/panel.html#gpio">GPIO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../future/panel.html#uln2803a">ULN2803A</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../future/panel.html#id1">Panel</a></li>
 </ul>
 </li>
@@ -297,13 +321,13 @@
         
           <li><a href="index.html">Faschingbauer Installation Specifics</a> &raquo;</li>
         
-      <li>Unsorted Electrical Things</li>
+      <li>Switches/Relays</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/doc/faschingbauer/electrics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/doc/faschingbauer/relays.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -316,22 +340,213 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="unsorted-electrical-things">
-<h1>Unsorted Electrical Things<a class="headerlink" href="#unsorted-electrical-things" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="switches-relays">
+<h1>Switches/Relays<a class="headerlink" href="#switches-relays" title="Permalink to this headline">¶</a></h1>
+<p>I use 16 relays which are isolated by optocouplers. Although it might
+be possible to drive those 16 LEDs directly from the built-in
+Raspberry GPIOs, I wouldn’t recommend that because there is a current
+limit of 50mA on the 3.3V rail <a class="footnote-reference brackets" href="#raspi-3v3-50ma" id="id1">1</a>. That is easily
+exceeded in the worst case - where all 16 LEDs are on. One needs to
+use a transistor of some form.</p>
+<p>Another problem to solve is which of the Raspberry GPIOs to use to
+drive the outputs. Much bigger of a problem though is the lack of
+understanding of low-level electronic facts and consequences; see
+further down below for a bookmark list.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><p>DS18x20 Onewire Sensors</p>
+<li><p><a class="reference internal" href="#sainsmart-8-channel-5v-relay-board" id="id7">Sainsmart 8 Channel 5V Relay Board</a></p></li>
+<li><p><a class="reference internal" href="#uln2803a-darlington-transistor-array" id="id8">ULN2803A Darlington Transistor Array</a></p></li>
+<li><p><a class="reference internal" href="#raspberry-gpio-usage" id="id9">Raspberry GPIO Usage</a></p>
 <ul>
-<li><p>RJ11 bus topology</p>
+<li><p><a class="reference internal" href="#long-story-short-gpio-relay-mapping" id="id10">Long Story Short: GPIO/Relay Mapping</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#miscellaneous" id="id11">Miscellaneous</a></p>
 <ul>
-<li><p>Perfectly packaged:
-<a class="reference external" href="https://www.reichelt.at/temperaturfuehler-ds18s20-20-60-c-bb-ds18s20-2-p202468.html?PROVID=2788&amp;wt_gata=61303081568_273004712830&amp;PROVID=2788&amp;gclid=EAIaIQobChMIt7Gg3N7i3QIVaLftCh0KxQU8EAYYASABEgL09PD_BwE&amp;&amp;r=1">https://www.reichelt.at/temperaturfuehler-ds18s20-20-60-c-bb-ds18s20-2-p202468.html?PROVID=2788&amp;wt_gata=61303081568_273004712830&amp;PROVID=2788&amp;gclid=EAIaIQobChMIt7Gg3N7i3QIVaLftCh0KxQU8EAYYASABEgL09PD_BwE&amp;&amp;r=1</a></p></li>
-<li><p>Arduino project wth those:
-<a class="reference external" href="http://nuewire.com/2011/04/easy-arduino-1-wire-sensor-network/">http://nuewire.com/2011/04/easy-arduino-1-wire-sensor-network/</a></p></li>
+<li><p><a class="reference internal" href="#bookmarks-electronics-etc" id="id12">Bookmarks: Electronics etc.</a></p></li>
+<li><p><a class="reference internal" href="#using-mcp23017" id="id13">Using MCP23017</a></p></li>
 </ul>
 </li>
 </ul>
-</li>
+</div>
+<div class="section" id="sainsmart-8-channel-5v-relay-board">
+<h2><a class="toc-backref" href="#id7">Sainsmart 8 Channel 5V Relay Board</a><a class="headerlink" href="#sainsmart-8-channel-5v-relay-board" title="Permalink to this headline">¶</a></h2>
+<p>To switch water pumps and oil burners, big fat relays are
+used. <a class="reference external" href="https://www.sainsmart.com/products/8-channel-5v-relay-module">Sainsmart has arrays of 8</a>
+opto-isolated relays, cheap and easy to use.</p>
+<div class="figure align-default" id="id4">
+<img alt="../../_images/board.jpg" src="../../_images/board.jpg" />
+<p class="caption"><span class="caption-text">8 channel isolated relay board from Sainsmart</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Driving the relays from the Rasperry’s 5V rail is tempting, but
+you’ll blow a fuse sooner or later (I had that) if you switch a
+couple of them at once. Give it a separate 5V supply!</p>
+</div>
+<div class="figure align-default" id="id5">
+<img alt="../../_images/1-channel.jpg" src="../../_images/1-channel.jpg" />
+<p class="caption"><span class="caption-text">Schematic of one channel out of eight.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="uln2803a-darlington-transistor-array">
+<h2><a class="toc-backref" href="#id8">ULN2803A Darlington Transistor Array</a><a class="headerlink" href="#uln2803a-darlington-transistor-array" title="Permalink to this headline">¶</a></h2>
+<p>In my early days of making I used an array of 16 <a class="reference download internal" download="" href="../../_downloads/b317208e83728d77b56f212a00ee40a5/bc548c-datasheet.pdf"><code class="xref download docutils literal notranslate"><span class="pre">BC548C</span></code></a> NPN transistors, together
+with the obligatory resistors at the base. This made a huge breadboard
+footprint (not to speak of soldering on the future PCB), so I decided
+to go with a more integrated solution: <a class="reference external" href="http://www.ti.com/lit/gpn/ULN2803A">ULN2803A (PDF)</a>.</p>
+<p>The chip consists of an array of eight <a class="reference external" href="https://en.wikipedia.org/wiki/Darlington_transistor">Darlington Transistors</a>, and provides
+all I need (including clamp diodes that I don’t need):</p>
+<div class="figure align-default" id="id6">
+<img alt="../../_images/uln2803-raspi-sainsmart.jpg" src="../../_images/uln2803-raspi-sainsmart.jpg" />
+<p class="caption"><span class="caption-text">Look, no resistors: all in one!</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Simply connect the ULN2803A <code class="docutils literal notranslate"><span class="pre">IN&lt;n&gt;</span></code> pins directly to designated
+Raspi GPIOs (see below), and the ULN2803A <code class="docutils literal notranslate"><span class="pre">OUT&lt;n&gt;</span></code> pins to the
+Sainsmart <code class="docutils literal notranslate"><span class="pre">IN&lt;m&gt;</span></code> connectors.</p>
+</div>
+<div class="section" id="raspberry-gpio-usage">
+<h2><a class="toc-backref" href="#id9">Raspberry GPIO Usage</a><a class="headerlink" href="#raspberry-gpio-usage" title="Permalink to this headline">¶</a></h2>
+<p>Not being an electronic engineer, I was having a hard time to figure
+out which of the Raspberry’s GPIOs were usable and which were
+not. Still hoping that I’ll learn that craft someday <a class="footnote-reference brackets" href="#arrogance" id="id2">2</a>;
+that could be fun.</p>
+<p>What’s important is the <em>power-on reset (POR) state</em> - the
+configuration that is applied to the pins right after power-on, before
+software can configure anything.</p>
+<p>First off, the POR <em>direction</em> of all pins is <em>input</em>. What’s more
+important is the <em>pullup/down POR state</em>. Some of the GPIOs are
+configured as pullup at POR, and others are configured as
+pulldown. See <a class="reference external" href="http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">BCM2835 ARM Peripherals</a>
+, “6.2 Alternative Function Assignments” (100ff) for an extensive
+listing describing which is configured as what (you may want to look
+at the more approachable <a class="reference external" href="https://elinux.org/RPi_BCM2835_GPIOs">elinux page</a>).</p>
+<p>It turns out that it’s exactly the GPIOs whose POR pull state is
+<em>pullup</em> are not stable - this is they are not consistently able to
+lighten the optocoupler LED enough to switch the relay on the other
+side. This makes some sense to a layman (/me); if you look at what’s
+inside the ULN2803A,</p>
+<img alt="../../_images/uln-internal.png" src="../../_images/uln-internal.png" />
+<p>one can imagine that having a pullup of 50K (the Raspi internal value)
+fight against the resistors does no good.</p>
+<p>Sure, it would help if I could unconfigure the pullup. Sure, this
+would be possible with <a class="reference external" href="https://pypi.org/project/RPi.GPIO/">RPi.GPIO</a> - but that library is
+Raspberry specific. Much like hardware engineers have a codex, a
+software engineers (/me) has one too, so: <em>no!</em> <a class="footnote-reference brackets" href="#gpiod" id="id3">3</a>.</p>
+<div class="section" id="long-story-short-gpio-relay-mapping">
+<h3><a class="toc-backref" href="#id10">Long Story Short: GPIO/Relay Mapping</a><a class="headerlink" href="#long-story-short-gpio-relay-mapping" title="Permalink to this headline">¶</a></h3>
+<p>Relays numbered 0 through 15, spanning both Sainsmart boards (with
+ULN2803A sitting in between appropriately):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Raspi GPIO</p></th>
+<th class="head"><p>Relay</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>27</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>23</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>24</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>14</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>15</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2><a class="toc-backref" href="#id11">Miscellaneous</a><a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bookmarks-electronics-etc">
+<h3><a class="toc-backref" href="#id12">Bookmarks: Electronics etc.</a><a class="headerlink" href="#bookmarks-electronics-etc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://embeddedartistry.com/blog/2018/06/04/demystifying-microcontroller-gpio-settings/">Demystifying Microcontroller GPIO Settings</a></p></li>
 </ul>
+</div>
+<div class="section" id="using-mcp23017">
+<h3><a class="toc-backref" href="#id13">Using MCP23017</a><a class="headerlink" href="#using-mcp23017" title="Permalink to this headline">¶</a></h3>
+<p>MCP23017 is a I2C/SPI IO expander. It can drive more current than pure
+Raspi GPIOs can; I had a couple of them lying around so I gave it a
+try. Easily attached (see for example
+<a class="reference external" href="http://www.faschingbauer.co.at/de/howtos/gpio-mcp23017/">http://www.faschingbauer.co.at/de/howtos/gpio-mcp23017/</a>, but dont
+forget to connect RESET to 3V3 :-) )</p>
+<p>Issues:</p>
+<ul class="simple">
+<li><p>(using <code class="docutils literal notranslate"><span class="pre">gpiod</span></code>) closing the chip file-descriptor does not reset
+pins to their POR state. (This is likely the driver’s fault.)
+<em>Unusable</em>: a crashing process might leave a pump running. Or, even
+worse, the oil burner.</p></li>
+<li><p>CPU reset does not propagate to MCP23017. <em>Unusable</em>: a hard reboot
+(one that does not terminate processes) would leave … running.</p></li>
+</ul>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="raspi-3v3-50ma"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>See <a class="reference external" href="https://elinux.org/RPi_Low-level_peripherals#General_Purpose_Input.2FOutput_.28GPIO.29">here</a>. The
+information is a bit hard to come by; there’s a
+section “Power Pins” where it says, “The maximum
+permitted current draw from the 3.3 V pins is 50
+mA.”</p>
+</dd>
+<dt class="label" id="arrogance"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Fortunately I know how to do software; doing a
+software project and not knowing what that is is much
+more severe.</p>
+</dd>
+<dt class="label" id="gpiod"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Openheating uses the <a class="reference external" href="https://lwn.net/Articles/565662/">new GPIO userspace interface of the
+kernel</a>, through an
+accompanying userspace library, <a class="reference external" href="https://github.com/brgl/libgpiod">libgpiod</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
 </div>
 
 
@@ -342,10 +557,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../marketing/index.html" class="btn btn-neutral float-right" title="Marketing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="thermometers.html" class="btn btn-neutral float-right" title="Thermometers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="w1/w1.html" class="btn btn-neutral float-left" title="Onewire" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Faschingbauer Installation Specifics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
